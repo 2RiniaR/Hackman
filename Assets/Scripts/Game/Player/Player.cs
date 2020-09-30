@@ -9,5 +9,8 @@ namespace Hackman.Game.Player {
         [Header("移動")]
         public float moveSpeed;
 
+        [SerializeField]
+        private Rigidbody2D _rigidbody;
+
     }
 }
