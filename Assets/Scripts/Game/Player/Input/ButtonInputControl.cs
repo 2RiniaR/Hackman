@@ -1,8 +1,9 @@
 using UnityEngine;
 using UniRx;
+using System;
 
 namespace Hackman.Game.Player {
-    public class ButtonInputControl {
+    public class ButtonInputControl : IInputControl {
 
         private readonly CompositeDisposable onDispose = new CompositeDisposable();
         private readonly ControlButtonSetting setting;
@@ -10,6 +11,10 @@ namespace Hackman.Game.Player {
         public ButtonInputControl(ControlButtonSetting setting) {
             this.setting = setting;
             Observable.EveryUpdate().Subscribe(_ => Update()).AddTo(onDispose);
+        }
+
+        public void Dispose() {
+            onDispose.Dispose();
         }
 
         private void Update() {

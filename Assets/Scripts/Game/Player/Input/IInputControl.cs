@@ -1,5 +1,5 @@
-using UnityEngine;
+using System;
 
 namespace Hackman.Game.Player {
-    public interface IInputControl {}
+    public interface IInputControl : IDisposable {}
 }
