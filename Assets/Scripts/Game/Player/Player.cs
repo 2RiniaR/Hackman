@@ -3,9 +3,6 @@ using UnityEngine;
 namespace Hackman.Game.Player {
     public class Player : MonoBehaviour {
 
-        [Header("操作")]
-        public ControlButtonSetting controlButtonSetting;
-
         [Header("移動")]
         public float moveSpeed;
 
@@ -23,7 +20,7 @@ namespace Hackman.Game.Player {
             moveSimulator = new MoveSimulator(_rigidbody);
             moveSpeedStore = new MoveSpeedStore(moveSpeed);
             moveUpdater = new MoveUpdater(moveSimulator, moveStatus);
-            inputControl = new ButtonInputControl(controlButtonSetting);
+            inputControl = new ButtonInputControl();
         }
 
         private void OnDestroy() {
