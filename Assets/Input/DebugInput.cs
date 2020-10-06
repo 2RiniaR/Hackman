@@ -21,17 +21,9 @@ namespace Hackman
             ""id"": ""dc2324ad-31ac-42a9-a700-98fc97459e3e"",
             ""actions"": [
                 {
-                    ""name"": ""MoveHorizontal"",
+                    ""name"": ""Move"",
                     ""type"": ""Button"",
-                    ""id"": ""b0f80261-2166-4fc2-9758-aa6dac1dab50"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""MoveVertical"",
-                    ""type"": ""Button"",
-                    ""id"": ""ae23a960-f04d-48eb-a2a8-e56a8db07046"",
+                    ""id"": ""7e00cf48-2e6a-4412-b065-9386fd2ae8ba"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -39,68 +31,57 @@ namespace Hackman
             ],
             ""bindings"": [
                 {
-                    ""name"": ""Axis"",
-                    ""id"": ""bda56177-a89e-4856-872d-23123507e77d"",
-                    ""path"": ""1DAxis"",
+                    ""name"": ""2D Vector"",
+                    ""id"": ""72d419bd-d34d-4520-b600-0ad126b43639"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveHorizontal"",
+                    ""action"": ""Move"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""negative"",
-                    ""id"": ""0fa02763-88bf-450d-90d5-da59416ce810"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MoveHorizontal"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""67f22011-33b0-4eb4-947f-9405a6e43c0f"",
+                    ""name"": ""up"",
+                    ""id"": ""3fa72519-f150-4ffe-8d81-0f1e1a4f40bb"",
                     ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveHorizontal"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Axis"",
-                    ""id"": ""60a78592-618c-4a30-84b4-410a33da7a6f"",
-                    ""path"": ""1DAxis"",
+                    ""name"": ""down"",
+                    ""id"": ""3253cf09-7808-4510-94e1-46f4168bae21"",
+                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveVertical"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""negative"",
-                    ""id"": ""9403cb29-18dc-464d-ac02-d4c75deb50c9"",
+                    ""name"": ""left"",
+                    ""id"": ""f04c1f47-fc3c-4c07-a040-676610c0e416"",
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveVertical"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""positive"",
-                    ""id"": ""64b13f9f-8d73-44f0-84c7-ed18224f8e37"",
+                    ""name"": ""right"",
+                    ""id"": ""cfd267ad-d17d-4c17-9bd6-9f0c74f5ae85"",
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveVertical"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -111,8 +92,7 @@ namespace Hackman
 }");
             // Player
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-            m_Player_MoveHorizontal = m_Player.FindAction("MoveHorizontal", throwIfNotFound: true);
-            m_Player_MoveVertical = m_Player.FindAction("MoveVertical", throwIfNotFound: true);
+            m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -162,14 +142,12 @@ namespace Hackman
         // Player
         private readonly InputActionMap m_Player;
         private IPlayerActions m_PlayerActionsCallbackInterface;
-        private readonly InputAction m_Player_MoveHorizontal;
-        private readonly InputAction m_Player_MoveVertical;
+        private readonly InputAction m_Player_Move;
         public struct PlayerActions
         {
             private @DebugInput m_Wrapper;
             public PlayerActions(@DebugInput wrapper) { m_Wrapper = wrapper; }
-            public InputAction @MoveHorizontal => m_Wrapper.m_Player_MoveHorizontal;
-            public InputAction @MoveVertical => m_Wrapper.m_Player_MoveVertical;
+            public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -179,30 +157,23 @@ namespace Hackman
             {
                 if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
                 {
-                    @MoveHorizontal.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveHorizontal;
-                    @MoveHorizontal.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveHorizontal;
-                    @MoveHorizontal.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveHorizontal;
-                    @MoveVertical.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveVertical;
-                    @MoveVertical.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveVertical;
-                    @MoveVertical.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveVertical;
+                    @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                    @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                    @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
                 {
-                    @MoveHorizontal.started += instance.OnMoveHorizontal;
-                    @MoveHorizontal.performed += instance.OnMoveHorizontal;
-                    @MoveHorizontal.canceled += instance.OnMoveHorizontal;
-                    @MoveVertical.started += instance.OnMoveVertical;
-                    @MoveVertical.performed += instance.OnMoveVertical;
-                    @MoveVertical.canceled += instance.OnMoveVertical;
+                    @Move.started += instance.OnMove;
+                    @Move.performed += instance.OnMove;
+                    @Move.canceled += instance.OnMove;
                 }
             }
         }
         public PlayerActions @Player => new PlayerActions(this);
         public interface IPlayerActions
         {
-            void OnMoveHorizontal(InputAction.CallbackContext context);
-            void OnMoveVertical(InputAction.CallbackContext context);
+            void OnMove(InputAction.CallbackContext context);
         }
     }
 }
