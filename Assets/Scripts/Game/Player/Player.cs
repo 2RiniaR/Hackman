@@ -20,7 +20,7 @@ namespace Hackman.Game.Player {
             moveSimulator = new MoveSimulator(_rigidbody);
             moveSpeedStore = new MoveSpeedStore(moveSpeed);
             moveUpdater = new MoveUpdater(moveSimulator, moveStatus);
-            inputControl = new ButtonInputControl();
+            inputControl = new ButtonInputControl(moveStatus, moveSpeedStore);
         }
 
         private void OnDestroy() {
