@@ -1,4 +1,3 @@
-using UnityEngine;
 using System;
 
 namespace Hackman.Game.Player {
