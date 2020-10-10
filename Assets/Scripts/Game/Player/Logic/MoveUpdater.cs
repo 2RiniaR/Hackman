@@ -1,5 +1,6 @@
 using UniRx;
 using System;
+using UnityEngine;
 
 namespace Hackman.Game.Player {
     public class MoveUpdater : IDisposable {
@@ -19,7 +20,7 @@ namespace Hackman.Game.Player {
         }
 
         private void Move() {
-            position.Move(move.Velocity);
+            position.Move(move.Velocity * Time.deltaTime);
         }
 
     }

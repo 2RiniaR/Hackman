@@ -19,11 +19,11 @@ namespace Hackman.Game.Player {
         }
 
         private void SetPosition(Vector2 position) {
-            transform.position = MapPositionToWorldPosition(position);
+            transform.localPosition = MapPositionToWorldPosition(position);
         }
 
         private static Vector2 MapPositionToWorldPosition(Vector2 mapPosition) {
-            return mapPosition - new Vector2(14f, 15.5f);
+            return mapPosition + new Vector2(-14f, -15f);
         }
 
     }
