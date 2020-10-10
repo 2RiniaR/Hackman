@@ -3,23 +3,23 @@ using UnityEngine;
 namespace Hackman.Game.Player {
     public class Player : MonoBehaviour {
 
+        [SerializeField]
+        private Map.MapSystem map;
+
         [Header("移動")]
         public float moveSpeed;
 
-        [SerializeField]
-        private Rigidbody2D _rigidbody;
-
         private IInputControl inputControl;
         private MoveUpdater moveUpdater;
-        private MoveSimulator moveSimulator;
         private MoveStatus moveStatus;
+        private PositionStatus positionStatus;
         private MoveSpeedStore moveSpeedStore;
 
         private void Awake() {
             moveStatus = new MoveStatus();
-            moveSimulator = new MoveSimulator(_rigidbody);
+            positionStatus = new PositionStatus();
             moveSpeedStore = new MoveSpeedStore(moveSpeed);
-            moveUpdater = new MoveUpdater(moveSimulator, moveStatus);
+            moveUpdater = new MoveUpdater(positionStatus, moveStatus);
             inputControl = new ButtonInputControl(moveStatus, moveSpeedStore);
         }
 

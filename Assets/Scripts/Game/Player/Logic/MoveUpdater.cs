@@ -5,12 +5,12 @@ namespace Hackman.Game.Player {
     public class MoveUpdater : IDisposable {
 
         private CompositeDisposable onDispose = new CompositeDisposable();
-        private readonly MoveSimulator simulator;
-        private readonly MoveStatus status;
+        private readonly PositionStatus position;
+        private readonly MoveStatus move;
 
-        public MoveUpdater(MoveSimulator simulator, MoveStatus status) {
-            this.simulator = simulator;
-            this.status = status;
+        public MoveUpdater(PositionStatus position, MoveStatus move) {
+            this.position = position;
+            this.move = move;
             Observable.EveryUpdate().Subscribe(_ => Move()).AddTo(onDispose);
         }
 
@@ -19,7 +19,7 @@ namespace Hackman.Game.Player {
         }
 
         private void Move() {
-            simulator.Move(status.Velocity);
+            position.Move(move.Velocity);
         }
 
     }
