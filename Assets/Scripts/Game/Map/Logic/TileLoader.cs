@@ -35,7 +35,9 @@ namespace Hackman.Game.Map {
             Tile[,] tilesArray = new Tile[maxColumn, tiles.Count];
             for (int row = 0; row < tiles.Count; row++) {
                 for (int column = 0; column < tiles[row].Length; column++) {
-                    tilesArray[column, row] = tiles[row][column];
+                    // テキストファイル上では最後に来る行が、マップ上ではy=0となるため
+                    // y座標を逆にする
+                    tilesArray[column, tiles.Count - 1 - row] = tiles[row][column];
                 }
             }
             tileStore.SetTiles(tilesArray);

@@ -5,24 +5,23 @@ using System;
 namespace Hackman.Game.Player {
     public class MoveStatus {
 
-        private readonly ReactiveProperty<Vector2> velocity = new ReactiveProperty<Vector2>();
-        public Vector2 Velocity => velocity.Value;
-        public IObservable<Vector2> OnVelocityChanged => velocity;
+        private readonly ReactiveProperty<Vector2> direction = new ReactiveProperty<Vector2>();
+        private readonly FloatReactiveProperty speed = new FloatReactiveProperty();
+        public Vector2 Direction => direction.Value;
+        public float Speed => speed.Value;
+        public IObservable<Vector2> OnDirectionChanged => direction;
+        public IObservable<float> OnSpeedChanged => speed;
 
         public void SetStop() {
-            SetVelocity(Vector2.zero);
-        }
-
-        public void SetVelocity(Vector2 velocity) {
-            this.velocity.Value = velocity;
+            SetSpeed(0f);
         }
 
         public void SetDirection(Vector2 direction) {
-            velocity.Value = direction * velocity.Value.magnitude;
+            this.direction.Value = direction.normalized;
         }
 
         public void SetSpeed(float speed) {
-            velocity.Value = velocity.Value.normalized * speed;
+            this.speed.Value = speed;
         }
 
     }

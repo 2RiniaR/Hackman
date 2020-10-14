@@ -23,7 +23,9 @@ namespace Hackman.Game.Player {
         }
 
         private static Vector2 MapPositionToWorldPosition(Vector2 mapPosition) {
-            return mapPosition + new Vector2(-14f, -15f);
+            Vector2 mapWorldPosition = new Vector2(-14f, -15.5f);
+            Vector2 playerSize = new Vector2(1f, 1f);
+            return mapPosition + mapWorldPosition + (playerSize / 2f);
         }
 
     }

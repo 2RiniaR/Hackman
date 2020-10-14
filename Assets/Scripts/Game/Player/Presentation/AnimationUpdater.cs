@@ -11,15 +11,14 @@ namespace Hackman.Game.Player {
 
         public AnimationUpdater(AnimatorParameter animatorParameter, MoveStatus move) {
             this.animatorParameter = animatorParameter;
-            move.OnVelocityChanged.Subscribe(SetDirection).AddTo(onDispose);
+            move.OnDirectionChanged.Subscribe(SetDirection).AddTo(onDispose);
         }
 
         public void Dispose() {
             onDispose.Dispose();
         }
 
-        private void SetDirection(Vector2 velocity) {
-            Vector2 direction = velocity.normalized;
+        private void SetDirection(Vector2 direction) {
             animatorParameter._animator.SetFloat(animatorParameter.HorizontalName, direction.x);
             animatorParameter._animator.SetFloat(animatorParameter.VerticalName, direction.y);
         }
