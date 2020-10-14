@@ -26,5 +26,13 @@ namespace Hackman.Game.Map {
             tileLoader.LoadAndSetTile(mapFilePath);
         }
 
+        public Tile[,] GetMapTiles() {
+            return tileStore.GetTiles();
+        }
+
+        public Tile GetMapTile(int x, int y) {
+            return tileStore.GetTile(x, y);
+        }
+
     }
 }
