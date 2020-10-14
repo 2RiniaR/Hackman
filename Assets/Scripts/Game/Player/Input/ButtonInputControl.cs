@@ -5,25 +5,30 @@ namespace Hackman.Game.Player {
     public class ButtonInputControl : IInputControl {
 
         private DebugInput input = new DebugInput();
-        private readonly MoveStatus move;
-        private readonly MoveSpeedStore speed;
+        private readonly MoveControlStatus moveControl;
 
-        public ButtonInputControl(MoveStatus move, MoveSpeedStore speed) {
-            this.move = move;
-            this.speed = speed;
-            input.Player.Move.started += OnMove;
+        public ButtonInputControl(MoveControlStatus moveControl) {
+            this.moveControl = moveControl;
+            input.Player.Move.started += OnMoveControl;
             input.Enable();
         }
 
         public void Dispose() {
             input.Disable();
-            input.Player.Move.started -= OnMove;
+            input.Player.Move.started -= OnMoveControl;
         }
 
-        private void OnMove(InputAction.CallbackContext context) {
+        private void OnMoveControl(InputAction.CallbackContext context) {
             Vector2 direction = context.ReadValue<Vector2>();
-            float speed = this.speed.MoveSpeed;
-            move.SetVelocity(direction * speed);
+            if (direction.x > 0) {
+                moveControl.SetControl(MoveControl.DirectionRight);
+            } else if (direction.x < 0) {
+                moveControl.SetControl(MoveControl.DirectionLeft);
+            } else if (direction.y > 0) {
+                moveControl.SetControl(MoveControl.DirectionUp);
+            } else if (direction.y < 0) {
+                moveControl.SetControl(MoveControl.DirectionDown);
+            }
         }
 
     }

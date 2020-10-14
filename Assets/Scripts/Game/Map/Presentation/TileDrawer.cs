@@ -22,7 +22,7 @@ namespace Hackman.Game.Map {
                 .Select(x => new Vector3Int(x % width, x / width, 1))
                 .ToArray();
             TileBase[] tileArray = positionArray
-                .Select(p => tiles[(int)mapElements[p.x, height - 1 - p.y]])
+                .Select(p => tiles[(int)mapElements[p.x, p.y]])
                 .ToArray();
             tilemap.SetTiles(positionArray, tileArray);
         }
