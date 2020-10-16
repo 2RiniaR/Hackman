@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UniRx;
 using System;
 
-namespace Hackman.Game.Player {
+namespace Hackman.Game.Entity {
     public class DebugOutput : MonoBehaviour {
 
         [SerializeField]

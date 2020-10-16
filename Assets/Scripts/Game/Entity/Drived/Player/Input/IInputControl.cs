@@ -1,5 +1,5 @@
 using System;
 
-namespace Hackman.Game.Player {
+namespace Hackman.Game.Entity.Player {
     public interface IInputControl : IDisposable {}
 }

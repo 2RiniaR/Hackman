@@ -2,7 +2,7 @@ using UnityEngine;
 using UniRx;
 using System;
 
-namespace Hackman.Game.Player {
+namespace Hackman.Game.Entity {
     public class PositionStatus {
 
         private readonly ReactiveProperty<Vector2> position = new ReactiveProperty<Vector2>();
