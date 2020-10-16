@@ -63,15 +63,6 @@ namespace Hackman.Game.Entity {
                 out Vector2 controlPosition  // 移動方向の変更を行う地点(曲がり角)の座標
             );
 
-            // Debug.Log(string.Join("\n", new string[] {
-            //     "[CheckControlValid]",
-            //     "    pos: (" + position.x.ToString("F5") + ", " + position.y.ToString("F5") + ")",
-            //     "    mov: (" + move.x.ToString("F5") + ", " + move.y.ToString("F5") + ")",
-            //     "    ctl: (" + controlDirection.x.ToString() + ", " + controlDirection.y.ToString() + ")",
-            //     "    fix: (" + controlPosition.x.ToString("F5") + ", " + controlPosition.y.ToString("F5") + ")",
-            //     "    ret: " + isControlValid
-            // }));
-
             // 操作方向に壁があるなど、移動方向の変更ができない場合は通常移動を行う
             if (!isControlValid) {
                 ApplyMove(position, move);
@@ -85,14 +76,6 @@ namespace Hackman.Game.Entity {
                 toControlPosition,
                 out var fixedPosition
             );
-
-            // Debug.Log(string.Join("\n", new string[] {
-            //     "[CheckMoveValid]",
-            //     "    pos: (" + position.x.ToString("F5") + ", " + position.y.ToString("F5") + ")",
-            //     "    mov: (" + toControlPosition.x.ToString("F5") + ", " + toControlPosition.y.ToString("F5") + ")",
-            //     "    fix: (" + fixedPosition.x.ToString("F5") + ", " + fixedPosition.y.ToString("F5") + ")",
-            //     "    ret: " + isMovingToControlPositionAllowed
-            // }));
 
             // 曲がり角までにブロックなどがあり、阻まれている場合は移動方向を変更できない
             if (isMovingToControlPositionAllowed) {
@@ -110,13 +93,6 @@ namespace Hackman.Game.Entity {
             // positionからmoveの方向に、移動可能な場所まで移動する
             MoveChecker.CheckMoveValid(map.GetMapTiles(), position, move, out var fixedPosition);
             positionStatus.SetPosition(fixedPosition);
-
-            // Debug.Log(string.Join("\n", new string[] {
-            //     "[CheckMoveValid]",
-            //     "    pos: (" + position.x.ToString("F5") + ", " + position.y.ToString("F5") + ")",
-            //     "    mov: (" + move.x.ToString("F5") + ", " + move.y.ToString("F5") + ")",
-            //     "    fix: (" + fixedPosition.x.ToString("F5") + ", " + fixedPosition.y.ToString("F5") + ")",
-            // }));
         }
 
     }
