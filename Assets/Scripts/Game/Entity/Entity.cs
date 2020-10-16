@@ -5,30 +5,27 @@ namespace Hackman.Game.Entity {
     public class Entity : MonoBehaviour {
 
         [SerializeField]
-        private Map.MapSystem map;
-
-        [Header("移動")]
-        public float moveSpeed;
+        protected Map.MapSystem map;
 
         [SerializeField]
-        private Vector2 initialPosition;
+        protected Vector2 initialPosition;
 
         [SerializeField]
-        private AnimatorParameter animatorParameter;
+        protected AnimatorParameter animatorParameter;
 
-        private MoveUpdater moveUpdater;
-        private MoveStatus moveStatus;
-        private PositionStatus positionStatus;
-        private MoveControlStatus moveControlStatus;
-        private AnimationUpdater animationUpdater;
-        private DrawPositionUpdater drawPositionUpdater;
+        protected MoveUpdater moveUpdater;
+        protected MoveStatus moveStatus;
+        protected PositionStatus positionStatus;
+        protected MoveControlStatus moveControlStatus;
+        protected AnimationUpdater animationUpdater;
+        protected DrawPositionUpdater drawPositionUpdater;
 
         public IObservable<MoveControl> OnControlChanged => moveControlStatus.OnControlChanged;
         public IObservable<float> OnSpeedChanged => moveStatus.OnSpeedChanged;
         public IObservable<Vector2> OnDirectionChanged => moveStatus.OnDirectionChanged;
         public IObservable<Vector2> OnPositionChanged => positionStatus.OnPositionChanged;
 
-        private void Awake() {
+        protected virtual void Awake() {
             moveStatus = new MoveStatus();
             positionStatus = new PositionStatus();
             moveControlStatus = new MoveControlStatus();
@@ -37,13 +34,13 @@ namespace Hackman.Game.Entity {
             drawPositionUpdater = new DrawPositionUpdater(transform, positionStatus);
         }
 
-        private void Start() {
+        protected virtual void Start() {
             positionStatus.SetPosition(initialPosition);
             moveStatus.SetSpeed(0);
             moveControlStatus.SetControl(MoveControl.None);
         }
 
-        private void OnDestroy() {
+        protected virtual void OnDestroy() {
             moveUpdater.Dispose();
             animationUpdater.Dispose();
             drawPositionUpdater.Dispose();
