@@ -20,6 +20,11 @@ namespace Hackman.Game.Entity {
         protected AnimationUpdater animationUpdater;
         protected DrawPositionUpdater drawPositionUpdater;
 
+        public Vector2 Position => positionStatus.Position;
+        public Vector2 Direction => moveStatus.Direction;
+        public float Speed => moveStatus.Speed;
+        public MoveControl Control => moveControlStatus.Control;
+
         public IObservable<MoveControl> OnControlChanged => moveControlStatus.OnControlChanged;
         public IObservable<float> OnSpeedChanged => moveStatus.OnSpeedChanged;
         public IObservable<Vector2> OnDirectionChanged => moveStatus.OnDirectionChanged;
@@ -44,6 +49,10 @@ namespace Hackman.Game.Entity {
             moveUpdater.Dispose();
             animationUpdater.Dispose();
             drawPositionUpdater.Dispose();
+        }
+
+        public void SetControl(MoveControl control) {
+            moveControlStatus.SetControl(control);
         }
 
     }
