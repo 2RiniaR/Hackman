@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blend Tree
+  m_Name: Facing
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -48,11 +48,11 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Base Layer
+  m_Name: FacingLayer
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -3456537736511289245}
-    m_Position: {x: 20, y: 230, z: 0}
+    m_Position: {x: 30, y: 230, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -77,16 +77,16 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Vertical
     m_Type: 1
     m_DefaultFloat: 1
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
-    m_Name: Base Layer
+    m_Name: FacingLayer
     m_StateMachine: {fileID: -1751950751380712988}
     m_Mask: {fileID: 0}
     m_Motions: []
@@ -103,7 +103,7 @@ BlendTree:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blend Tree
+  m_Name: Facing2DBlendTree
   m_Childs:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: b8f45f65c6c6a2a44b6d4dede204175e, type: 2}
