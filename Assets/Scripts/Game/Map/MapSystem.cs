@@ -34,8 +34,8 @@ namespace Hackman.Game.Map {
             return tileStore.GetTile(x, y);
         }
 
-        public void SetTile(int x, int y, Tile tile) {
-            tileStore.SetTile(x, y, tile);
+        public void UpdateTile(int x, int y, Tile tile) {
+            tileStore.UpdateTile(x, y, tile);
         }
 
     }

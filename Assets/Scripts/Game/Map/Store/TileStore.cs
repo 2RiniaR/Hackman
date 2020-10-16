@@ -11,11 +11,12 @@ namespace Hackman.Game.Map {
             this.drawer = drawer;
         }
 
-        public void SetTile(int x, int y, Tile tile) {
+        public void UpdateTile(int x, int y, Tile tile) {
             if (!x.IsRange(0, tiles.GetLength(0) - 1) || !y.IsRange(0, tiles.GetLength(1) - 1)) {
                 return;
             }
             tiles[x, y] = tile;
+            drawer.UpdateTileView(x, y, tile);
         }
 
         public void SetTiles(Tile[,] tiles) {
