@@ -2,7 +2,7 @@ using UnityEngine;
 using UniRx;
 using System;
 
-namespace Hackman.Game.Player {
+namespace Hackman.Game.Entity {
     public class AnimationUpdater : IDisposable {
 
         private readonly CompositeDisposable onDispose = new CompositeDisposable();

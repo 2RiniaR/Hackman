@@ -1,4 +1,4 @@
-namespace Hackman.Game.Player {
+namespace Hackman.Game.Entity {
     public enum MoveControl {
         None,
         DirectionUp,

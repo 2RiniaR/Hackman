@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-namespace Hackman.Game.Player {
+namespace Hackman.Game.Entity {
     [Serializable]
     public struct AnimatorParameter {
         public Animator _animator;

@@ -2,7 +2,7 @@ using UnityEngine;
 using UniRx;
 using System;
 
-namespace Hackman.Game.Player {
+namespace Hackman.Game.Entity {
     public class MoveStatus {
 
         private readonly ReactiveProperty<Vector2> direction = new ReactiveProperty<Vector2>();

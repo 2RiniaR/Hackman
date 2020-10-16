@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Hackman.Game.Player {
+namespace Hackman.Game.Entity.Player {
     public class ButtonInputControl : IInputControl {
 
         private DebugInput input = new DebugInput();

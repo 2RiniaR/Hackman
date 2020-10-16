@@ -1,4 +1,4 @@
-namespace Hackman.Game.Player {
+namespace Hackman.Game.Entity.Player {
     public class MoveSpeedStore {
 
         private float moveSpeed;

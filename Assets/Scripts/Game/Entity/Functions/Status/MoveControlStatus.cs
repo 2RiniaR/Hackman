@@ -1,7 +1,7 @@
 using UniRx;
 using System;
 
-namespace Hackman.Game.Player {
+namespace Hackman.Game.Entity {
     public class MoveControlStatus {
 
         private readonly ReactiveProperty<MoveControl> control = new ReactiveProperty<MoveControl>();

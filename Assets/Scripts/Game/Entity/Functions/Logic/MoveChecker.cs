@@ -2,7 +2,7 @@ using UniRx;
 using UnityEngine;
 using System.Linq;
 
-namespace Hackman.Game.Player {
+namespace Hackman.Game.Entity {
     public static class MoveChecker {
 
         private static bool IsMoveAllowedOn(Map.Tile tile) {

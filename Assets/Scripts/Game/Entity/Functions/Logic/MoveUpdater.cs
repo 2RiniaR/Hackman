@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Hackman.Game.Player {
+namespace Hackman.Game.Entity {
     public class MoveUpdater : IDisposable {
 
         private static readonly Vector2 size = new Vector2(1f, 1f);
