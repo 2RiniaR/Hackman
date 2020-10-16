@@ -21,12 +21,14 @@ namespace Hackman.Game.Entity {
         private readonly PositionStatus positionStatus;
         private readonly MoveControlStatus moveControlStatus;
         private readonly MoveStatus moveStatus;
+        private readonly MoveSpeedStore speedStore;
         private readonly Map.MapSystem map;
 
-        public MoveUpdater(MoveControlStatus moveControlStatus, PositionStatus positionStatus, MoveStatus moveStatus, Map.MapSystem map) {
+        public MoveUpdater(MoveControlStatus moveControlStatus, PositionStatus positionStatus, MoveStatus moveStatus, MoveSpeedStore speedStore, Map.MapSystem map) {
             this.moveControlStatus = moveControlStatus;
             this.positionStatus = positionStatus;
             this.moveStatus = moveStatus;
+            this.speedStore = speedStore;
             this.map = map;
             Observable.EveryUpdate().Subscribe(_ => MoveUpdate()).AddTo(onDispose);
         }
@@ -41,7 +43,7 @@ namespace Hackman.Game.Entity {
             // 現在のフレームでの移動前の座標
             Vector2 currentPosition = positionStatus.Position;
             // 現在のフレームでの移動ベクトル
-            Vector2 moveVector = moveStatus.Direction * moveStatus.Speed * Time.deltaTime;
+            Vector2 moveVector = moveStatus.GetFlameMoveVector();
 
             bool isMoveControlRequested = controlMoveMap.TryGetValue(control, out Vector2Int controlDirection);
             if (isMoveControlRequested) {
@@ -81,7 +83,7 @@ namespace Hackman.Game.Entity {
             if (isMovingToControlPositionAllowed) {
                 moveControlStatus.SetControl(MoveControl.None);
                 moveStatus.SetDirection(controlDirection);
-                moveStatus.SetSpeed(3f);
+                moveStatus.SetSpeed(speedStore.MoveSpeed);
             }
             positionStatus.SetPosition(fixedPosition);
         }

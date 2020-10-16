@@ -24,5 +24,9 @@ namespace Hackman.Game.Entity {
             this.speed.Value = speed;
         }
 
+        public Vector2 GetFlameMoveVector() {
+            return Direction * Speed * Time.deltaTime;
+        }
+
     }
 }

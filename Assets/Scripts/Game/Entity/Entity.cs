@@ -4,6 +4,9 @@ using System;
 namespace Hackman.Game.Entity {
     public class Entity : MonoBehaviour {
 
+        [Header("移動")]
+        public float moveSpeed;
+
         [SerializeField]
         protected Map.MapSystem map;
 
@@ -19,6 +22,7 @@ namespace Hackman.Game.Entity {
         protected MoveControlStatus moveControlStatus;
         protected AnimationUpdater animationUpdater;
         protected DrawPositionUpdater drawPositionUpdater;
+        protected MoveSpeedStore moveSpeedStore;
 
         public Vector2 Position => positionStatus.Position;
         public Vector2 Direction => moveStatus.Direction;
@@ -34,7 +38,8 @@ namespace Hackman.Game.Entity {
             moveStatus = new MoveStatus();
             positionStatus = new PositionStatus();
             moveControlStatus = new MoveControlStatus();
-            moveUpdater = new MoveUpdater(moveControlStatus, positionStatus, moveStatus, map);
+            moveSpeedStore = new MoveSpeedStore(moveSpeed);
+            moveUpdater = new MoveUpdater(moveControlStatus, positionStatus, moveStatus, moveSpeedStore, map);
             animationUpdater = new AnimationUpdater(animatorParameter, moveStatus);
             drawPositionUpdater = new DrawPositionUpdater(transform, positionStatus);
         }
