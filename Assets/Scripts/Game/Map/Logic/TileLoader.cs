@@ -15,10 +15,10 @@ namespace Hackman.Game.Map {
             }
         );
 
-        private readonly TileStore tileStore;
+        private readonly FieldStore fieldStore;
 
-        public TileLoader(TileStore tileStore) {
-            this.tileStore = tileStore;
+        public TileLoader(FieldStore fieldStore) {
+            this.fieldStore = fieldStore;
         }
 
         public void LoadAndSetTile(string filepath) {
@@ -32,15 +32,15 @@ namespace Hackman.Game.Map {
                 }
             }
 
-            Tile[,] tilesArray = new Tile[maxColumn, tiles.Count];
+            MapElement[,] elementsArray = new MapElement[maxColumn, tiles.Count];
             for (int row = 0; row < tiles.Count; row++) {
                 for (int column = 0; column < tiles[row].Length; column++) {
-                    // テキストファイル上では最後に来る行が、マップ上ではy=0となるため
+                    // テキストファイル上では最後に来る行が、マップ上では y = 0 となるため
                     // y座標を逆にする
-                    tilesArray[column, tiles.Count - 1 - row] = tiles[row][column];
+                    elementsArray[column, tiles.Count - 1 - row] = new MapElement(tiles[row][column]);
                 }
             }
-            tileStore.SetTiles(tilesArray);
+            fieldStore.SetField(elementsArray);
         }
 
         private static Tile ParseTile(char c) {

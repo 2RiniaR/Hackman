@@ -15,27 +15,19 @@ namespace Hackman.Game.Map {
         [SerializeField]
         private string mapFilePath;
 
-        private TileStore tileStore;
+        private FieldStore fieldStore;
         private TileLoader tileLoader;
         private TileDrawer tileDrawer;
 
         private void Awake() {
-            tileDrawer = new TileDrawer(tilemap, tiles);
-            tileStore = new TileStore(tileDrawer);
-            tileLoader = new TileLoader(tileStore);
+            fieldStore = new FieldStore();
+            tileDrawer = new TileDrawer(fieldStore, tilemap, tiles);
+            tileLoader = new TileLoader(fieldStore);
             tileLoader.LoadAndSetTile(mapFilePath);
         }
 
-        public Tile[,] GetMapTiles() {
-            return tileStore.GetTiles();
-        }
-
-        public Tile GetMapTile(int x, int y) {
-            return tileStore.GetTile(x, y);
-        }
-
-        public void UpdateTile(int x, int y, Tile tile) {
-            tileStore.UpdateTile(x, y, tile);
+        public MapField GetField() {
+            return fieldStore.Field;
         }
 
     }

@@ -1,39 +1,58 @@
 using UnityEngine;
-using UnityEngine.Tilemaps;
+using System;
+using UniRx;
 using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace Hackman.Game.Map {
-    public class TileDrawer {
+    public class TileDrawer : IDisposable {
 
         private const int tilePosZ = 0;
 
-        private readonly Tilemap tilemap;
-        private readonly ReadOnlyCollection<TileBase> tiles;
+        private readonly CompositeDisposable onDispose = new CompositeDisposable();
+        private readonly UnityEngine.Tilemaps.Tilemap tilemap;
+        private readonly ReadOnlyCollection<UnityEngine.Tilemaps.TileBase> tiles;
 
-        public TileDrawer(Tilemap tilemap, IList<TileBase> tiles) {
+        public TileDrawer(
+            FieldStore fieldStore,
+            UnityEngine.Tilemaps.Tilemap tilemap,
+            IList<UnityEngine.Tilemaps.TileBase> tiles
+        ) {
             this.tilemap = tilemap;
-            this.tiles = new ReadOnlyCollection<TileBase>(tiles);
+            this.tiles = new ReadOnlyCollection<UnityEngine.Tilemaps.TileBase>(tiles);
+            fieldStore.OnFieldSet.Subscribe(SetTileViews).AddTo(onDispose);
+            fieldStore.OnFieldElementUpdated.Subscribe(UpdateTileView).AddTo(onDispose);
         }
 
-        public void UpdateTileView(int x, int y, Tile mapElement) {
-            tilemap.SetTile(
-                new Vector3Int(x, y, tilePosZ),
-                tiles[(int)mapElement]
-            );
+        public void Dispose() {
+            onDispose.Dispose();
         }
 
-        public void SetTileViews(Tile[,] mapElements) {
-            int width = mapElements.GetLength(0);
-            int height = mapElements.GetLength(1);
-            Vector3Int[] positionArray = Enumerable.Range(0, mapElements.Length)
-                .Select(x => new Vector3Int(x % width, x / width, tilePosZ))
+        public void UpdateTileView(UpdateFieldElementEventArgs args) {
+            Vector3Int pos = new Vector3Int(args.UpdatedPosition.x, args.UpdatedPosition.y, tilePosZ);
+            tilemap.SetTile(pos, GetTileFromMapElement(args.ElementAfterUpdate));
+        }
+
+        public void SetTileViews(MapField field) {
+            Vector3Int[] positionArray = Enumerable.Range(0, field.Width * field.Height)
+                .Select(x => new Vector3Int(x % field.Width, x / field.Width, tilePosZ))
                 .ToArray();
-            TileBase[] tileArray = positionArray
-                .Select(p => tiles[(int)mapElements[p.x, p.y]])
+            UnityEngine.Tilemaps.TileBase[] tileArray = positionArray
+                .Select(p => {
+                    var element = field.GetElement(p.x, p.y);
+                    return GetTileFromMapElement(element);
+                })
                 .ToArray();
             tilemap.SetTiles(positionArray, tileArray);
+        }
+
+        private UnityEngine.Tilemaps.TileBase GetTileFromMapElement(MapElement? element) {
+            if (element.HasValue) {
+                return tiles[(int)element.Value.Tile];
+            } else {
+                return tiles[(int)MapElement.None.Tile];
+            }
         }
 
     }

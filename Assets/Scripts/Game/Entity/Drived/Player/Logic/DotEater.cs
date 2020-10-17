@@ -30,12 +30,13 @@ namespace Hackman.Game.Entity.Player {
                 if (!IsTargetTile(pos)) {
                     continue;
                 }
-                map.UpdateTile(pos.x, pos.y, afterTile);
+                map.GetField().UpdateElement(pos, new MapElement(afterTile));
             }
         }
 
         private bool IsTargetTile(Vector2Int position) {
-            return targetTiles.Contains(map.GetMapTile(position.x, position.y));
+            var mapElement = map.GetField().GetElement(position);
+            return mapElement.HasValue && targetTiles.Contains(mapElement.Value.Tile);
         }
 
         private static Vector2Int[] GetNearIntergerPositions(Vector2 position, Vector2 move, float mergin) {
