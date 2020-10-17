@@ -1043,6 +1043,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1350769129}
+  - component: {fileID: 1350769130}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -1065,6 +1066,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1350769130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350769128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e67ce7fcc2dac34b8560f4da3e576cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapSystem: {fileID: 2038036989}
+  player: {fileID: 1845938412}
 --- !u!1 &1412131584
 GameObject:
   m_ObjectHideFlags: 0
@@ -1526,7 +1541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e62e87370d0c1814c9e9bba0d3d14b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 8
   map: {fileID: 2038036989}
   initialPosition: {x: 13.5, y: 7}
   animatorParameter:
