@@ -1,27 +1,30 @@
 using UniRx;
 using UnityEngine;
 using System.Linq;
+using Hackman.Game.Map;
 
 namespace Hackman.Game.Entity {
     public static class MoveChecker {
 
-        private static bool IsMoveAllowedOn(Map.Tile tile) {
-            return tile != Map.Tile.Wall;
+        private static bool IsMoveAllowedOn(MapElement? element) {
+            return !element.HasValue || IsMoveAllowedOn(element.Value);
+        }
+
+        private static bool IsMoveAllowedOn(MapElement element) {
+            return element.Tile != Map.Tile.Wall;
         }
 
         /// <summary>
         /// 移動方向の変更が可能であるかを返す
         /// </summary>
         public static bool CheckMoveValid(
-            Map.Tile[,] mapTiles,
+            MapField field,
             Vector2 pos,
             Vector2 move,
             out Vector2 fixedPosition
         ) {
             // プレイヤーの判定サイズ
             Vector2 size = new Vector2(1f, 1f);
-            // マップの縦横の長さ
-            Vector2Int mapSize = new Vector2Int(mapTiles.GetLength(0), mapTiles.GetLength(1));
 
             // xとy両方の指定がある場合、大きさが大きいほうのみ適用する
             if (Mathf.Abs(move.x) >= Mathf.Abs(move.y)) {
@@ -35,8 +38,8 @@ namespace Hackman.Game.Entity {
 
                 foreach (int x in checkPositionsX) {
                     if (
-                        x.IsRange(0, mapSize.x - 1) &&
-                        (checkPositionsY.Length > 0 && checkPositionsY.Any(y => y.IsRange(0, mapSize.y - 1) && !IsMoveAllowedOn(mapTiles[x, y])))
+                        x.IsRange(0, field.Width - 1) &&
+                        (checkPositionsY.Length > 0 && checkPositionsY.Any(y => !IsMoveAllowedOn(field.GetElement(x, y))))
                     ) {
                         if (move.x < 0f) fixedPosition = new Vector2(x + 1f, pos.y);
                         else fixedPosition = new Vector2(x - size.x, pos.y);
@@ -57,8 +60,8 @@ namespace Hackman.Game.Entity {
 
                 foreach (int y in checkPositionsY) {
                     if (
-                        y.IsRange(0, mapSize.y - 1) &&
-                        (checkPositionsX.Length > 0 && checkPositionsX.Any(x => x.IsRange(0, mapSize.x - 1) && !IsMoveAllowedOn(mapTiles[x, y])))
+                        y.IsRange(0, field.Height - 1) &&
+                        (checkPositionsX.Length > 0 && checkPositionsX.Any(x => !IsMoveAllowedOn(field.GetElement(x, y))))
                     ) {
                         if (move.y < 0f) fixedPosition = new Vector2(pos.x, y + 1f);
                         else fixedPosition = new Vector2(pos.x, y - size.y);

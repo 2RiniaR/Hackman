@@ -6,6 +6,10 @@ using UnityEngine;
 namespace Hackman.Game.Entity {
     public class MoveUpdater : IDisposable {
 
+        struct MoveApplicationResult {
+            public Vector2 AfterPosition;
+        }
+
         private static readonly Vector2 size = new Vector2(1f, 1f);
         private static readonly ReactiveDictionary<MoveControl, Vector2Int> controlMoveMap = new ReactiveDictionary<MoveControl, Vector2Int>(
             new Dictionary<MoveControl, Vector2Int>() {
@@ -24,41 +28,49 @@ namespace Hackman.Game.Entity {
         private readonly MoveSpeedStore speedStore;
         private readonly Map.MapSystem map;
 
+        private readonly Subject<MoveUpdateResult> onUpdated = new Subject<MoveUpdateResult>();
+        public IObservable<MoveUpdateResult> OnUpdated => onUpdated;
+
         public MoveUpdater(MoveControlStatus moveControlStatus, PositionStatus positionStatus, MoveStatus moveStatus, MoveSpeedStore speedStore, Map.MapSystem map) {
             this.moveControlStatus = moveControlStatus;
             this.positionStatus = positionStatus;
             this.moveStatus = moveStatus;
             this.speedStore = speedStore;
             this.map = map;
-            Observable.EveryUpdate().Subscribe(_ => MoveUpdate()).AddTo(onDispose);
+            Observable.EveryUpdate().Subscribe(_ => Update()).AddTo(onDispose);
         }
 
         public void Dispose() {
             onDispose.Dispose();
         }
 
-        private void MoveUpdate() {
-            // 現在のフレームでの操作状態
-            MoveControl control = moveControlStatus.Control;
+        private void Update() {
             // 現在のフレームでの移動前の座標
             Vector2 currentPosition = positionStatus.Position;
             // 現在のフレームでの移動ベクトル
             Vector2 moveVector = moveStatus.GetFlameMoveVector();
+            // 現在のフレームでの操作状態
+            MoveControl control = moveControlStatus.Control;
 
+            MoveApplicationResult result;
             bool isMoveControlRequested = controlMoveMap.TryGetValue(control, out Vector2Int controlDirection);
             if (isMoveControlRequested) {
-                ApplyMoveControl(currentPosition, moveVector, controlDirection);
+                result = ApplyMoveWithControl(currentPosition, moveVector, controlDirection);
             } else {
-                ApplyMove(currentPosition, moveVector);
+                result = ApplyMove(currentPosition, moveVector);
             }
+
+            onUpdated.OnNext(
+                MoveUpdateResult.Applied(currentPosition, moveVector, control, result.AfterPosition)
+            );
         }
 
         /// <summary>
         /// 移動に対する操作を適用する
         /// </summary>
-        private void ApplyMoveControl(Vector2 position, Vector2 move, Vector2Int controlDirection) {
+        private MoveApplicationResult ApplyMoveWithControl(Vector2 position, Vector2 move, Vector2Int controlDirection) {
             bool isControlValid = ControlChecker.CheckControlValid(
-                map.GetMapTiles(),
+                map.GetField(),
                 position,
                 move,
                 controlDirection,
@@ -67,13 +79,12 @@ namespace Hackman.Game.Entity {
 
             // 操作方向に壁があるなど、移動方向の変更ができない場合は通常移動を行う
             if (!isControlValid) {
-                ApplyMove(position, move);
-                return;
+                return ApplyMove(position, move);
             }
 
             Vector2 toControlPosition = controlPosition - position;
             bool isMovingToControlPositionAllowed = MoveChecker.CheckMoveValid(
-                map.GetMapTiles(),
+                map.GetField(),
                 position,
                 toControlPosition,
                 out var fixedPosition
@@ -86,15 +97,23 @@ namespace Hackman.Game.Entity {
                 moveStatus.SetSpeed(speedStore.MoveSpeed);
             }
             positionStatus.SetPosition(fixedPosition);
+
+            return new MoveApplicationResult {
+                AfterPosition = fixedPosition
+            };
         }
 
         /// <summary>
         /// 操作なしの移動を適用する
         /// </summary>
-        private void ApplyMove(Vector2 position, Vector2 move) {
+        private MoveApplicationResult ApplyMove(Vector2 position, Vector2 move) {
             // positionからmoveの方向に、移動可能な場所まで移動する
-            MoveChecker.CheckMoveValid(map.GetMapTiles(), position, move, out var fixedPosition);
+            MoveChecker.CheckMoveValid(map.GetField(), position, move, out var fixedPosition);
             positionStatus.SetPosition(fixedPosition);
+
+            return new MoveApplicationResult {
+                AfterPosition = fixedPosition
+            };
         }
 
     }
