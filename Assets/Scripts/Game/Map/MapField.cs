@@ -7,12 +7,15 @@ namespace Hackman.Game.Map {
     public struct UpdateFieldElementEventArgs {
         public readonly MapField TargetField;
         public readonly Vector2Int UpdatedPosition;
-        public readonly MapElement? ElementAfterUpdate;
+        public readonly MapElement ElementBeforeUpdate;
+        public readonly MapElement ElementAfterUpdate;
 
-        public UpdateFieldElementEventArgs(MapField target, Vector2Int pos) {
+        public UpdateFieldElementEventArgs(MapField target, Vector2Int pos, MapElement beforeElement) {
             TargetField = target;
             UpdatedPosition = pos;
-            ElementAfterUpdate = target.GetElement(pos);
+            ElementBeforeUpdate = beforeElement;
+            var element = target.GetElement(pos);
+            ElementAfterUpdate = element.HasValue ? element.Value : MapElement.None;
         }
     }
 
@@ -42,9 +45,10 @@ namespace Hackman.Game.Map {
             if (!IsFieldRange(pos)) {
                 return;
             }
+            var beforeElement = elements[pos.x, pos.y];
             elements[pos.x, pos.y] = element;
             onFieldElementUpdated.OnNext(
-                new UpdateFieldElementEventArgs(this, pos)
+                new UpdateFieldElementEventArgs(this, pos, beforeElement)
             );
         }
 
