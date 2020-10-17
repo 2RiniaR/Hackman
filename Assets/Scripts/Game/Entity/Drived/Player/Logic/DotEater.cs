@@ -30,12 +30,12 @@ namespace Hackman.Game.Entity.Player {
                 if (!IsTargetTile(pos)) {
                     continue;
                 }
-                map.GetField().UpdateElement(pos, new MapElement(afterTile));
+                map.Field.UpdateElement(pos, new MapElement(afterTile));
             }
         }
 
         private bool IsTargetTile(Vector2Int position) {
-            var mapElement = map.GetField().GetElement(position);
+            var mapElement = map.Field.GetElement(position);
             return mapElement.HasValue && targetTiles.Contains(mapElement.Value.Tile);
         }
 

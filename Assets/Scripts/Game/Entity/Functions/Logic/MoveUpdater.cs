@@ -70,7 +70,7 @@ namespace Hackman.Game.Entity {
         /// </summary>
         private MoveApplicationResult ApplyMoveWithControl(Vector2 position, Vector2 move, Vector2Int controlDirection) {
             bool isControlValid = ControlChecker.CheckControlValid(
-                map.GetField(),
+                map.Field,
                 position,
                 move,
                 controlDirection,
@@ -84,7 +84,7 @@ namespace Hackman.Game.Entity {
 
             Vector2 toControlPosition = controlPosition - position;
             bool isMovingToControlPositionAllowed = MoveChecker.CheckMoveValid(
-                map.GetField(),
+                map.Field,
                 position,
                 toControlPosition,
                 out var fixedPosition
@@ -108,7 +108,7 @@ namespace Hackman.Game.Entity {
         /// </summary>
         private MoveApplicationResult ApplyMove(Vector2 position, Vector2 move) {
             // positionからmoveの方向に、移動可能な場所まで移動する
-            MoveChecker.CheckMoveValid(map.GetField(), position, move, out var fixedPosition);
+            MoveChecker.CheckMoveValid(map.Field, position, move, out var fixedPosition);
             positionStatus.SetPosition(fixedPosition);
 
             return new MoveApplicationResult {
