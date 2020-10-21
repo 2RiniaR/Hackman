@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Hackman.Game.Entity {
-    public class MoveUpdater : IDisposable {
+    public class MoveUpdater {
 
         struct MoveApplicationResult {
             public Vector2 AfterPosition;
@@ -20,9 +20,7 @@ namespace Hackman.Game.Entity {
             }
         );
 
-        private CompositeDisposable onDispose = new CompositeDisposable();
-
-        private readonly PositionStatus positionStatus;
+        private readonly Transform transform;
         private readonly MoveControlStatus moveControlStatus;
         private readonly MoveStatus moveStatus;
         private readonly MoveSpeedStore speedStore;
@@ -31,22 +29,17 @@ namespace Hackman.Game.Entity {
         private readonly Subject<MoveUpdateResult> onUpdated = new Subject<MoveUpdateResult>();
         public IObservable<MoveUpdateResult> OnUpdated => onUpdated;
 
-        public MoveUpdater(MoveControlStatus moveControlStatus, PositionStatus positionStatus, MoveStatus moveStatus, MoveSpeedStore speedStore, Map.MapSystem map) {
+        public MoveUpdater(MoveControlStatus moveControlStatus, Transform transform, MoveStatus moveStatus, MoveSpeedStore speedStore, Map.MapSystem map) {
             this.moveControlStatus = moveControlStatus;
-            this.positionStatus = positionStatus;
+            this.transform = transform;
             this.moveStatus = moveStatus;
             this.speedStore = speedStore;
             this.map = map;
-            Observable.EveryUpdate().Subscribe(_ => Update()).AddTo(onDispose);
         }
 
-        public void Dispose() {
-            onDispose.Dispose();
-        }
-
-        private void Update() {
+        public void UpdatePosition() {
             // 現在のフレームでの移動前の座標
-            Vector2 currentPosition = positionStatus.Position;
+            Vector2 currentPosition = (Vector2)transform.localPosition - (size / 2f);
             // 現在のフレームでの移動ベクトル
             Vector2 moveVector = moveStatus.GetFlameMoveVector();
             // 現在のフレームでの操作状態
@@ -96,7 +89,7 @@ namespace Hackman.Game.Entity {
                 moveStatus.SetDirection(controlDirection);
                 moveStatus.SetSpeed(speedStore.MoveSpeed);
             }
-            positionStatus.SetPosition(fixedPosition);
+            transform.localPosition = fixedPosition + (size / 2f);
 
             return new MoveApplicationResult {
                 AfterPosition = fixedPosition
@@ -109,7 +102,7 @@ namespace Hackman.Game.Entity {
         private MoveApplicationResult ApplyMove(Vector2 position, Vector2 move) {
             // positionからmoveの方向に、移動可能な場所まで移動する
             MoveChecker.CheckMoveValid(map.Field, position, move, out var fixedPosition);
-            positionStatus.SetPosition(fixedPosition);
+            transform.localPosition = fixedPosition + (size / 2f);
 
             return new MoveApplicationResult {
                 AfterPosition = fixedPosition
