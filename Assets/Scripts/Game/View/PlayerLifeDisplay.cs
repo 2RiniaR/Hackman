@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 using UnityEngine.UI;
 
 namespace Hackman.Game {
@@ -8,11 +7,7 @@ namespace Hackman.Game {
         [SerializeField]
         private Text lifeCountText = null;
 
-        private void Start() {
-            SetLifeCount(3);
-        }
-
-        private void SetLifeCount(int count) {
+        public void SetLifeCount(int count) {
             lifeCountText.text = count.ToString();
         }
 
