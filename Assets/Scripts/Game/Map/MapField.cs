@@ -12,10 +12,9 @@ namespace Hackman.Game.Map {
 
         public UpdateFieldElementEventArgs(MapField target, Vector2Int pos, MapElement beforeElement) {
             TargetField = target;
-            UpdatedPosition = pos;
+            UpdatedPosition = target.NormalizePosition(pos);
             ElementBeforeUpdate = beforeElement;
-            var element = target.GetElement(pos);
-            ElementAfterUpdate = element.HasValue ? element.Value : MapElement.None;
+            ElementAfterUpdate = target.GetElement(pos);
         }
     }
 
@@ -56,14 +55,12 @@ namespace Hackman.Game.Map {
             return (MapElement[,])elements.Clone();
         }
 
-        public MapElement? GetElement(int x, int y) {
+        public MapElement GetElement(int x, int y) {
             return GetElement(new Vector2Int(x, y));
         }
 
-        public MapElement? GetElement(Vector2Int pos) {
-            if (!IsFieldRange(pos)) {
-                return null;
-            }
+        public MapElement GetElement(Vector2Int pos) {
+            pos = NormalizePosition(pos);
             return elements[pos.x, pos.y];
         }
 
@@ -73,6 +70,22 @@ namespace Hackman.Game.Map {
 
         public bool IsFieldRange(Vector2 pos) {
             return Mathf.FloorToInt(pos.x).IsRange(0, Width - 1) && Mathf.FloorToInt(pos.y).IsRange(0, Height - 1);
+        }
+
+        public Vector2Int NormalizePosition(Vector2Int pos) {
+            int surplusX = pos.x % Width;
+            int surplusY = pos.y % Height;
+            if (surplusX < 0) surplusX = Width + surplusX;
+            if (surplusY < 0) surplusY = Height + surplusY;
+            return new Vector2Int(surplusX, surplusY);
+        }
+
+        public Vector2 NormalizePosition(Vector2 pos) {
+            float surplusX = pos.x % Width;
+            float surplusY = pos.y % Height;
+            if (surplusX < 0) surplusX = Width + surplusX;
+            if (surplusY < 0) surplusY = Height + surplusY;
+            return new Vector2(surplusX, surplusY);
         }
 
     }

@@ -35,8 +35,7 @@ namespace Hackman.Game.Entity.Player {
         }
 
         private bool IsTargetTile(Vector2Int position) {
-            var mapElement = map.Field.GetElement(position);
-            return mapElement.HasValue && targetTiles.Contains(mapElement.Value.Tile);
+            return targetTiles.Contains(map.Field.GetElement(position).Tile);
         }
 
         private static Vector2Int[] GetNearIntergerPositions(Vector2 position, Vector2 move, float mergin) {

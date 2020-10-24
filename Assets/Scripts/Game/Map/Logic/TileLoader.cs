@@ -8,6 +8,7 @@ namespace Hackman.Game.Map {
 
         private static readonly ReadOnlyDictionary<char, Tile> charMap = new ReadOnlyDictionary<char, Tile>(
             new Dictionary<char, Tile>() {
+                { 'x', Tile.None        },
                 { '0', Tile.Floor       },
                 { '1', Tile.Dot         },
                 { '2', Tile.PowerCookie },
