@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,36 +15,29 @@ namespace Hackman.Game.Entity.Monster.Brain
 
         [SerializeField] private MapSystem mapSystem;
 
-        private float _debugTimer;
+        private MapGraph _mapGraph;
 
         private void Start()
         {
-            StartCoroutine(DebugInterval());
+            var mapGraphConverter = new MapGraphConverter(mapSystem.Field);
+            _mapGraph = mapGraphConverter.GetGraph();
         }
 
-        private IEnumerator DebugInterval()
+        private void Update()
         {
-            while (true)
-            {
-                _debugTimer -= Time.deltaTime;
-                if (_debugTimer <= 0f)
-                {
-                    DebugSurvivalIndex();
-                    _debugTimer = 2f;
-                }
-
-                yield return null;
-            }
+            DebugSurvivalIndex();
         }
 
         private void DebugSurvivalIndex()
         {
-            var mapGraphConverter = new MapGraphConverter(mapSystem.Field);
-            var surviveIndex = SurvivalIndexCalculator.GetSurvivalIndex(
-                new EntityStatus(player.transform.localPosition - new Vector3(.5f, .5f), player.Direction),
-                monsters.Select(m => new EntityStatus(m.transform.localPosition - new Vector3(.5f, .5f), m.Direction)),
-                mapGraphConverter.GetGraph());
-            Debug.Log("生存指数: " + surviveIndex);
+            var playerStatus =
+                new EntityStatus(player.transform.localPosition - new Vector3(.5f, .5f), player.Direction);
+            var monstersStatus = monsters.Select(m =>
+                new EntityStatus(m.transform.localPosition - new Vector3(.5f, .5f), m.Direction));
+            var surviveIndex = SurvivalIndexCalculator.GetSurvivalIndex(playerStatus, monstersStatus, _mapGraph);
+            Debug.Log("生存指数: " + surviveIndex + "\n[Player] pos: " + playerStatus.Position + " dir: " +
+                      playerStatus.Direction + "\n" + monstersStatus.Select((m, i) =>
+                          "[Monster" + i + "] pos: " + m.Position + " dir: " + m.Direction + "\n"));
         }
     }
 }

@@ -2455,7 +2455,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7c9a33a27362d0f4695123487d496a38, type: 2}
   - {fileID: 11400000, guid: 3ec2461f293b48c4091d6d8a44ba9e9e, type: 2}
   - {fileID: 11400000, guid: bf725b87b882ba841aebaa7aa53018c8, type: 2}
-  - {fileID: 11400000, guid: 3be7b8d22d4b1e840b9b7859b614ad66, type: 2}
+  - {fileID: 11400000, guid: 714c69d334fff7e43ad23dca7af6f28b, type: 2}
   mapFilePath: C:\\Users\\watan\\MyPrograms\\Hackman_1028.tar\\Hackman_1028\\Hackman\\docs\\map_raw.txt
 --- !u!1 &2057859399
 GameObject:

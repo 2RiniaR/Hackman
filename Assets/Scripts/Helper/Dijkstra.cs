@@ -18,9 +18,11 @@ public static class Dijkstra {
         public readonly int NodeCount;
         public IEnumerable<Edge> GetEdgesStartAt(int id) => _edges[id];
 
-        public Graph(Edge[][] edges) {
-            this._edges = edges;
-            NodeCount = edges.SelectMany(e => e).Select(e => e.To).Max() + 1;
+        public Graph(Edge[][] edges) : this(edges, edges.SelectMany(e => e).Select(e => e.To).Max() + 1) {}
+
+        public Graph(Edge[][] edges, int nodeCount) {
+            _edges = edges;
+            NodeCount = nodeCount;
         }
     }
 

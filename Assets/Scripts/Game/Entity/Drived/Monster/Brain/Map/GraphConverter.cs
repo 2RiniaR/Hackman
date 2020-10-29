@@ -24,21 +24,28 @@ namespace Hackman.Game.Entity.Monster.Brain
         ///     任意の座標が、マップグラフ辺の始点からどのくらいの距離にあるかを返す
         /// </summary>
         /// <param name="edge">対象のマップグラフ辺</param>
+        /// <param name="routePositions"></param>
         /// <param name="position">対象の座標</param>
         /// <returns>距離</returns>
-        private static float GetDistanceInEdge(MapGraphEdge edge, Vector2 position)
+        private static float GetDistanceInEdge(IEnumerable<Vector2Int> routePositions, Vector2 position, float eps = 1e-6f)
         {
             var distance = 0f;
-            foreach (var routePosition in edge.RoutePositions)
+            var routePositionsArray = routePositions as Vector2Int[] ?? routePositions.ToArray();
+            for (var i = 0; i < routePositionsArray.Length - 1; i++)
             {
-                if (routePosition.x <= position.x && position.x < routePosition.x &&
-                    routePosition.y <= position.y && position.y < routePosition.y)
+                var previousPosition = routePositionsArray[i];
+                var nextPosition = routePositionsArray[i + 1];
+                var min = new Vector2Int(Mathf.Min(previousPosition.x, nextPosition.x), Mathf.Min(previousPosition.y, nextPosition.y));
+                var max = new Vector2Int(Mathf.Max(previousPosition.x, nextPosition.x), Mathf.Max(previousPosition.y, nextPosition.y));
+                if (min.x - eps <= position.x && position.x < max.x + eps && min.y - eps <= position.y && position.y < max.y + eps)
                 {
-                    distance += Mathf.Max(Mathf.Abs(position.x - routePosition.x),
-                        Mathf.Abs(position.y - routePosition.y));
+                    // ルート上の座標が対象の座標と同一だった場合は、その誤差を距離に加算して終了
+                    distance += Mathf.Max(Mathf.Abs(position.x - previousPosition.x),
+                        Mathf.Abs(position.y - previousPosition.y));
                     break;
                 }
 
+                // ルート上の座標が対象の座標と同一でないとき、1マス分(=1.0)を距離に加算する
                 distance += 1f;
             }
 
@@ -88,11 +95,16 @@ namespace Hackman.Game.Entity.Monster.Brain
                         DistanceFromStart = 0f
                     };
                 case MapGraphElementType.Edge:
+                    var startNodePosition = graph.Nodes[graph.Edges[containedMapElement.Id].StartNodeId].Position;
+                    var endNodePosition = graph.Nodes[graph.Edges[containedMapElement.Id].EndNodeId].Position;
+                    var routePositions = new []{startNodePosition}
+                        .Concat(graph.Edges[containedMapElement.Id].RoutePositions)
+                        .Concat(new []{endNodePosition});
                     return new GraphPosition
                     {
                         Type = MapGraphElementType.Edge,
                         ElementId = containedMapElement.Id,
-                        DistanceFromStart = GetDistanceInEdge(graph.Edges[containedMapElement.Id], position)
+                        DistanceFromStart = GetDistanceInEdge(routePositions, position)
                     };
                 default:
                     return new GraphPosition
