@@ -14,19 +14,25 @@ namespace Hackman.Game.Entity.Monster.Brain {
         /// <param name="playerNodeID">プレイヤーのノードIDが格納される</param>
         /// <param name="monstersNodeID">モンスターのノードIDが格納される</param>
         /// <returns>グラフ</returns>
-        private static Graph GetExpandedGraph(EntityStatus player, in IEnumerable<EntityStatus> monsters,
-            MapGraph mapGraph, out int playerNodeID, out IEnumerable<int> monstersNodeID)
+        private static GraphExpandResult GetExpandedGraph(EntityStatus player, in IEnumerable<EntityStatus> monsters,
+            MapGraph mapGraph)
         {
             var graphConverter = new GraphConverter(mapGraph);
-            playerNodeID = graphConverter.AppendNode(player.Position);
-            var monstersNodeIDArray = new int[monsters.Count()];
+            var playerNode = graphConverter.AppendNode(player.Position, player.Direction);
+            var monstersNode = new GraphConverter.AppendNodeResult[monsters.Count()];
             for (var i = 0; i < monsters.Count(); i++)
             {
-                monstersNodeIDArray[i] = graphConverter.AppendNode(monsters.ElementAt(i).Position);
+                monstersNode[i] = graphConverter.AppendNode(monsters.ElementAt(i).Position, monsters.ElementAt(i).Direction);
             }
 
-            monstersNodeID = monstersNodeIDArray;
-            return graphConverter.ConvertedGraph;
+            return new GraphExpandResult
+            {
+                ExpandedGraph = graphConverter.ConvertedGraph,
+                Player = new EntityGraphPosition
+                    {NodeID = playerNode.NodeID, ForwardEdgeIndex = playerNode.ForwardEdgeIndex},
+                Monsters = monstersNode.Select(m => new EntityGraphPosition
+                    {NodeID = m.NodeID, ForwardEdgeIndex = m.ForwardEdgeIndex}).ToArray()
+            };
         }
 
         private static float[] GetNodeDistanceFromPlayer(Graph graph, int playerNodeID, in IEnumerable<int> monstersNodeID)
@@ -100,13 +106,29 @@ namespace Hackman.Game.Entity.Monster.Brain {
         /// <param name="mapGraph">適用するマップのグラフ</param>
         public static float GetSurvivalIndex(EntityStatus player, in IEnumerable<EntityStatus> monsters, MapGraph mapGraph) {
             // 各エンティティの座標を考慮して拡張したグラフを取得する
-            var graph = GetExpandedGraph(player, monsters, mapGraph, out var playerNodeID, out var monstersNodeID);
-            var distanceFromPlayer = GetNodeDistanceFromPlayer(graph, playerNodeID, in monstersNodeID);
-            var distanceFromMonster = GetMinNodeDistanceFromMonsters(graph, playerNodeID, in monstersNodeID);
+            var graphExpandResult = GetExpandedGraph(player, monsters, mapGraph);
+            var distanceFromPlayer = GetNodeDistanceFromPlayer(graphExpandResult.ExpandedGraph,
+                graphExpandResult.Player.NodeID, graphExpandResult.Monsters.Select(m => m.NodeID));
+            var distanceFromMonster = GetMinNodeDistanceFromMonsters(graphExpandResult.ExpandedGraph,
+                graphExpandResult.Player.NodeID, graphExpandResult.Monsters.Select(m => m.NodeID));
 
             //「プレイヤーの生存指数」として、「モンスターからの最短距離」よりも「プレイヤーからの最短距離」のほうが短いノードの数を返す
-            var nearPlayerNodeCount = Enumerable.Range(0, graph.NodeCount).Count(nodeId => distanceFromPlayer[nodeId] < distanceFromMonster[nodeId]);
+            var nearPlayerNodeCount = Enumerable.Range(0, graphExpandResult.ExpandedGraph.NodeCount)
+                .Count(nodeId => distanceFromPlayer[nodeId] < distanceFromMonster[nodeId]);
             return nearPlayerNodeCount;
+        }
+
+        private struct EntityGraphPosition
+        {
+            public int NodeID;
+            public int ForwardEdgeIndex;
+        }
+
+        private struct GraphExpandResult
+        {
+            public Graph ExpandedGraph;
+            public EntityGraphPosition Player;
+            public EntityGraphPosition[] Monsters;
         }
 
     }

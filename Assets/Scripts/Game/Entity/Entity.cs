@@ -3,7 +3,10 @@ using System;
 using UniRx;
 
 namespace Hackman.Game.Entity {
-    public class Entity : MonoBehaviour {
+    public class Entity : MonoBehaviour
+    {
+
+        [SerializeField] protected Vector2Int initialDirection;
 
         [Header("移動")]
         public float moveSpeed;
@@ -34,6 +37,7 @@ namespace Hackman.Game.Entity {
             moveSpeedStore = new MoveSpeedStore(moveSpeed);
             moveUpdater = new MoveUpdater(moveControlStatus, transform, moveStatus, moveSpeedStore, map);
             animationUpdater = new AnimationUpdater(animatorParameter, moveStatus);
+            moveStatus.SetDirection(initialDirection);
         }
 
         protected virtual void Start() {

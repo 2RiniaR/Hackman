@@ -81,38 +81,63 @@ namespace Hackman.Game.Entity.Monster.Brain
         /// <param name="graph">対象のマップグラフ</param>
         /// <param name="position">対象の座標</param>
         /// <returns>positionがgraph内で相当する要素</returns>
-        private static GraphPosition GetGraphPosition(MapGraph graph, Vector2 position)
+        private static GraphPosition GetGraphPosition(MapGraph graph, Vector2 position, Vector2 direction)
         {
             var containedMapElement = GetMapGraphElement(graph, position);
 
             switch (containedMapElement.Type)
             {
                 case MapGraphElementType.Node:
+                    var forwardEdgeIndex = -1;
+                    var forwardMapElement = GetMapGraphElement(graph, position + direction);
+                    if (forwardMapElement.Type == MapGraphElementType.Edge)
+                    {
+                        foreach (var (edgeID, index) in graph.Nodes[containedMapElement.Id].ConnectedEdgesId.Select((x, i) => (x, i)))
+                        {
+                            if (forwardMapElement.Id != edgeID) continue;
+                            forwardEdgeIndex = index;
+                            break;
+                        }
+                    }
+
                     return new GraphPosition
                     {
                         Type = MapGraphElementType.Node,
                         ElementId = containedMapElement.Id,
-                        DistanceFromStart = 0f
+                        ForwardEdgeIndex = forwardEdgeIndex
                     };
+
                 case MapGraphElementType.Edge:
                     var startNodePosition = graph.Nodes[graph.Edges[containedMapElement.Id].StartNodeId].Position;
                     var endNodePosition = graph.Nodes[graph.Edges[containedMapElement.Id].EndNodeId].Position;
                     var routePositions = new []{startNodePosition}
                         .Concat(graph.Edges[containedMapElement.Id].RoutePositions)
                         .Concat(new []{endNodePosition});
+
+                    var isStartNodeForward = false;
+                    var forwardPosition = position + direction;
+                    foreach (var routePosition in routePositions)
+                    {
+                        if (routePosition.x <= forwardPosition.x && forwardPosition.x < routePosition.x &&
+                            routePosition.y <= forwardPosition.y && forwardPosition.y < routePosition.y)
+                        {
+                            isStartNodeForward = true;
+                            break;
+                        }
+                        if (routePosition.x <= position.x && position.x < routePosition.x &&
+                            routePosition.y <= position.y && position.y < routePosition.y) break;
+                    }
+
                     return new GraphPosition
                     {
                         Type = MapGraphElementType.Edge,
                         ElementId = containedMapElement.Id,
-                        DistanceFromStart = GetDistanceInEdge(routePositions, position)
+                        DistanceFromStart = GetDistanceInEdge(routePositions, position),
+                        IsStartNodeForward = isStartNodeForward
                     };
+
                 default:
-                    return new GraphPosition
-                    {
-                        Type = MapGraphElementType.None,
-                        ElementId = 0,
-                        DistanceFromStart = 0f
-                    };
+                    return new GraphPosition { Type = MapGraphElementType.None };
             }
         }
 
@@ -137,7 +162,14 @@ namespace Hackman.Game.Entity.Monster.Brain
             return entityGraph;
         }
 
-        private int AppendNodeToEdge(int edgeID, float distanceFromStartNode)
+        /// <summary>
+        ///     グラフの辺の中にノードを挿入する
+        /// </summary>
+        /// <param name="edgeID">挿入する辺のID</param>
+        /// <param name="distanceFromStartNode">ノードを挿入する位置</param>
+        /// <param name="isStartNodeForward"></param>
+        /// <returns></returns>
+        private AppendNodeResult AppendNodeToEdge(int edgeID, float distanceFromStartNode, bool isStartNodeForward)
         {
             var nodes = ConvertedGraph.Nodes.ToList();
             var edges = ConvertedGraph.Edges.ToList();
@@ -156,45 +188,86 @@ namespace Hackman.Game.Entity.Monster.Brain
             var newNode = new GraphNode(newNodeId, new[] {containedEdge.ID, newEdgeId});
             nodes.Add(newNode);
 
-            // エッジを追加する
+            // EndNode側 と 新しいノード を繋ぐエッジを追加する
             var newEdgeBetweenStartToPosition = new GraphEdge(newEdgeId, newNodeId, containedEdge.EndNodeId,
                 containedEdge.Weight - distanceFromStartNode);
             edges.Add(newEdgeBetweenStartToPosition);
+
+            // 既存のエッジを、StartNode側 と 新しいノード を繋ぐエッジに更新する
             var newEdgeBetweenEndToPosition = new GraphEdge(containedEdge.ID, containedEdge.StartNodeId,
                 newNodeId, distanceFromStartNode);
             edges[containedEdgeIndex] = newEdgeBetweenEndToPosition;
 
+            // 進行方向のエッジを指定する
+            var forwardEdgeId = isStartNodeForward ? containedEdge.ID : newEdgeId;
+
+            // グラフを更新する
             ConvertedGraph = new Graph(nodes, edges);
-            return newNodeId;
+
+            return new AppendNodeResult(newNodeId, forwardEdgeId);
         }
 
         /// <summary>
         ///     グラフ内に任意の座標に相当するノードを追加する
         /// </summary>
         /// <param name="positions"></param>
-        public int AppendNode(Vector2 position)
+        public AppendNodeResult AppendNode(Vector2 position, Vector2 direction)
         {
             // 対象座標が、グラフ上のどの位置に所属するのかを取得する
-            var graphPosition = GetGraphPosition(_mapGraph, position);
+            var graphPosition = GetGraphPosition(_mapGraph, position, direction);
 
             switch (graphPosition.Type)
             {
                 case MapGraphElementType.Node:
                     // ノードに相当した場合、そのノードを相当するノードとする
-                    return graphPosition.ElementId;
+                    return new AppendNodeResult(graphPosition.ElementId, graphPosition.ForwardEdgeIndex);
 
                 case MapGraphElementType.Edge:
-                    return AppendNodeToEdge(graphPosition.ElementId, graphPosition.DistanceFromStart);
+                    // エッジに相当した場合、そのエッジにノードを挿入して、挿入したノードを相当するノードとする
+                    return AppendNodeToEdge(graphPosition.ElementId, graphPosition.DistanceFromStart, graphPosition.IsStartNodeForward);
             }
 
-            return -1;
+            return AppendNodeResult.Failed;
         }
 
         private struct GraphPosition
         {
             public MapGraphElementType Type;
+
             public int ElementId;
+
+            /// <summary>
+            ///    Type が Node のとき、前方向のエッジのインデックス
+            /// </summary>
+            public int ForwardEdgeIndex;
+
+            /// <summary>
+            ///    Type が Edge のとき、StartNode側が前方向であればtrue、そうでなければfalse
+            /// </summary>
+            public bool IsStartNodeForward;
+
+            /// <summary>
+            ///     Type が Edge のとき、StartNode側からの距離
+            /// </summary>
             public float DistanceFromStart;
+        }
+
+        public readonly struct AppendNodeResult
+        {
+            public readonly bool IsSucceed;
+            public readonly int NodeID;
+            public readonly int ForwardEdgeIndex;
+
+            public AppendNodeResult(int nodeID, int forwardEdgeIndex) : this(nodeID, forwardEdgeIndex, true) { }
+
+            public static AppendNodeResult Failed => new AppendNodeResult(-1, -1, false);
+
+            private AppendNodeResult(int nodeID, int forwardEdgeIndex, bool isSucceed)
+            {
+                NodeID = nodeID;
+                ForwardEdgeIndex = forwardEdgeIndex;
+                IsSucceed = isSucceed;
+            }
         }
     }
 }
