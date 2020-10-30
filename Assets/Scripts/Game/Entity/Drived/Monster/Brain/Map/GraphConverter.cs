@@ -88,14 +88,14 @@ namespace Hackman.Game.Entity.Monster.Brain
             switch (containedMapElement.Type)
             {
                 case MapGraphElementType.Node:
-                    var forwardEdgeIndex = -1;
+                    var forwardEdgeID = -1;
                     var forwardMapElement = GetMapGraphElement(graph, position + direction);
                     if (forwardMapElement.Type == MapGraphElementType.Edge)
                     {
-                        foreach (var (edgeID, index) in graph.Nodes[containedMapElement.Id].ConnectedEdgesId.Select((x, i) => (x, i)))
+                        foreach (var edgeID in graph.Nodes[containedMapElement.Id].ConnectedEdgesId)
                         {
                             if (forwardMapElement.Id != edgeID) continue;
-                            forwardEdgeIndex = index;
+                            forwardEdgeID = edgeID;
                             break;
                         }
                     }
@@ -104,7 +104,7 @@ namespace Hackman.Game.Entity.Monster.Brain
                     {
                         Type = MapGraphElementType.Node,
                         ElementId = containedMapElement.Id,
-                        ForwardEdgeIndex = forwardEdgeIndex
+                        ForwardEdgeID = forwardEdgeID
                     };
 
                 case MapGraphElementType.Edge:
@@ -220,7 +220,7 @@ namespace Hackman.Game.Entity.Monster.Brain
             {
                 case MapGraphElementType.Node:
                     // ノードに相当した場合、そのノードを相当するノードとする
-                    return new AppendNodeResult(graphPosition.ElementId, graphPosition.ForwardEdgeIndex);
+                    return new AppendNodeResult(graphPosition.ElementId, graphPosition.ForwardEdgeID);
 
                 case MapGraphElementType.Edge:
                     // エッジに相当した場合、そのエッジにノードを挿入して、挿入したノードを相当するノードとする
@@ -237,9 +237,9 @@ namespace Hackman.Game.Entity.Monster.Brain
             public int ElementId;
 
             /// <summary>
-            ///    Type が Node のとき、前方向のエッジのインデックス
+            ///    Type が Node のとき、前方向のエッジID
             /// </summary>
-            public int ForwardEdgeIndex;
+            public int ForwardEdgeID;
 
             /// <summary>
             ///    Type が Edge のとき、StartNode側が前方向であればtrue、そうでなければfalse
@@ -256,16 +256,16 @@ namespace Hackman.Game.Entity.Monster.Brain
         {
             public readonly bool IsSucceed;
             public readonly int NodeID;
-            public readonly int ForwardEdgeIndex;
+            public readonly int ForwardEdgeID;
 
-            public AppendNodeResult(int nodeID, int forwardEdgeIndex) : this(nodeID, forwardEdgeIndex, true) { }
+            public AppendNodeResult(int nodeID, int forwardEdgeID) : this(nodeID, forwardEdgeID, true) { }
 
             public static AppendNodeResult Failed => new AppendNodeResult(-1, -1, false);
 
-            private AppendNodeResult(int nodeID, int forwardEdgeIndex, bool isSucceed)
+            private AppendNodeResult(int nodeID, int forwardEdgeID, bool isSucceed)
             {
                 NodeID = nodeID;
-                ForwardEdgeIndex = forwardEdgeIndex;
+                ForwardEdgeID = forwardEdgeID;
                 IsSucceed = isSucceed;
             }
         }

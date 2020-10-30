@@ -2235,7 +2235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e62e87370d0c1814c9e9bba0d3d14b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialDirection: {x: 0, y: 0}
+  initialDirection: {x: 0, y: 1}
   moveSpeed: 8
   map: {fileID: 2038036989}
   animatorParameter:
@@ -2460,7 +2460,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3ec2461f293b48c4091d6d8a44ba9e9e, type: 2}
   - {fileID: 11400000, guid: bf725b87b882ba841aebaa7aa53018c8, type: 2}
   - {fileID: 11400000, guid: 714c69d334fff7e43ad23dca7af6f28b, type: 2}
-  mapFilePath: C:\\Users\\watan\\MyPrograms\\Hackman_1028.tar\\Hackman_1028\\Hackman\\docs\\map_raw.txt
+  mapFilePath: /home/watano1168/Hackman/docs/map_raw.txt
 --- !u!1 &2057859399
 GameObject:
   m_ObjectHideFlags: 0
