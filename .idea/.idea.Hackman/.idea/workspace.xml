@@ -34,15 +34,162 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99501f7e-c3e1-4e64-b9f0-a2ceb7fcfd9a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Game/Map/map_1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Game/Map/map_1.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/DoorKey.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/DoorKey/DoorKey.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/DoorKey/DoorKey.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/ControlChanceDetector.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/ControlChanceDetector.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/Presentation.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/Presentation/VitalIndexViewUpdater.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/Presentation/VitalIndexViewUpdater.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Logic/CollisionDetector.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/GameActivator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/GameActivator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Camera.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Camera/FollowPlayerCamera.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Camera/FollowPlayerCamera.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/DoorKey.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/DoorKey/DoorKeySystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/DoorKey/DoorKeySystem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Map/GameMap.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Map/GameMap.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Map/Logic/TileLoader.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Map/MapSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Map/Presentation/TileDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Map/Store/FieldStore.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Map/Tile.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Phase/PhaseSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Phase/PhaseSystem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/PlayerLife.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/PlayerLife/PlayerLifeSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/PlayerLife/PlayerLifeSystem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/View/DifficultyView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/View/DifficultyView.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/View/DoorKeyView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/View/DoorKeyView.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/View/DoorKeyViewItem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/View/DoorKeyViewItem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/View/PlayerLifeViewItem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/View/PlayerLifeViewItem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/View/VitalIndexView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/View/VitalIndexView.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Hackman/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Hackman/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Hackman/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Hackman/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Hackman/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Hackman/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/GameStartAnimation/Start.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/GameStartAnimation/Start.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainGameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainGameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/Map/GraphConverter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/Map/GraphConverter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/Map/MapGraph.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/Map/MapGraph.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/Map/MapGraphConverter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/Map/MapGraphConverter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/MonsterBrain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/MonsterBrain.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/SurvivalIndexCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/SurvivalIndexCalculator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Judge/GameOver.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/MainGame.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/Start.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Logic/DotEater.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Logic/DotEater.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Logic/LifeUpdater.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Logic/LifeUpdater.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Logic/MonsterCollisionChecker.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Logic/MonsterCollisionChecker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Logic/CollisionDetector.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Presentation.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Presentation/KilledAnimationPlayer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Presentation/KilledAnimationPlayer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Presentation/LifeDisplayUpdater.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Presentation/LifeDisplayUpdater.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Status.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Status/LifeStatus.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Status/LifeStatus.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Entity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Logic/ControlChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Logic/ControlChecker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Logic/MoveChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Logic/MoveChecker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Logic/MoveUpdateResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Logic/MoveUpdateResult.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Logic/MoveUpdater.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Logic/MoveUpdater.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Presentation/AnimationUpdater.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Presentation/AnimationUpdater.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Presentation/AnimatorParameter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Presentation/AnimatorParameter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Status/MoveControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Status/MoveControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Status/MoveControlStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Status/MoveControlStatus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Status/MoveStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Status/MoveStatus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Store/MoveSpeedStore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Store/MoveSpeedStore.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/GameSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Game.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/GameSystem.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Judge.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Judge/Clear.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Judge/Clear/ClearJudger.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Judge/Clear/ClearJudger.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Map.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Map.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Map/Logic.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Map/Logic.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Map/Logic/TileLoader.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Map/Logic/TileLoader.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Map/Logic/TileLoader.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Map/MapElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Map/MapElement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Map/MapElement.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Map/MapElement.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Map/MapField.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Map/MapField.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Map/MapField.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Map/MapField.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Map/MapSystem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Map/MapSystem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Map/MapSystem.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Map/Presentation.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Map/Presentation.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Map/Presentation/TileDrawer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Map/Presentation/TileDrawer.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Map/Presentation/TileDrawer.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Map/Store.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Map/Store.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Map/Store/FieldStore.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Map/Store/FieldStore.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Map/Store/FieldStore.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Map/Tile.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Map/Tile.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Map/Tile.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Phase.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Phase.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Phase/Elements.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Phase/Elements.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Phase/Elements/Active.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Phase/Elements/Active/ActivePhase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Phase/Elements/ActivePhase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Phase/Elements/Active/ActivePhase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Phase/Elements/ActivePhase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Phase/Elements/PhaseElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Phase/Elements/PhaseElement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Phase/Elements/PhaseElement.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Phase/Elements/PhaseElement.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Phase/Elements/PlayerDeath.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Phase/Elements/PlayerDeath/PlayerDeathPhase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Phase/Elements/PlayerDeathPhase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Phase/Elements/PlayerDeath/PlayerDeathPhase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Phase/Elements/PlayerDeathPhase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Phase/Elements/Start.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Phase/Elements/Start/StartPhase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Phase/Elements/StartPhase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Phase/Elements/Start/StartPhase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Phase/Elements/StartPhase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Phase/Phase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Phase/Phase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Phase/Phase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/System/Phase/Phase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Phase/PhaseActivator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Phase/PhaseActivator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Phase/Status.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Phase/Status/PhaseStatus.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Phase/Status/PhaseStatus.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/View/GameStartAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/View/GameStartAnimation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/View/PlayerLifeDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/View/PlayerLifeView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/View/PlayerLifeDisplay.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/View/PlayerLifeView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Helper/IntegerRangeHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Helper/IntegerRangeHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/Item1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/Item1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/Item2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/Item2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/Map7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/Map7.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/MapPipeline1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/MapPipeline1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/MapPipeline2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/MapPipeline2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/MapPipeline3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/MapPipeline3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/MapPipeline4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/MapPipeline4.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/MapWall.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Game/MapWall.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/Monster1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/Monster1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/Monster2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/Monster2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/Monster3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/Monster3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/Monster4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/Monster4.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/Player.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Game/Player.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Game/Player.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Game/Player.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tilemap/Playground/Item1.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tilemap/Playground/Item1.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tilemap/Playground/Item2.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tilemap/Playground/Item2.asset.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,21 +201,69 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/SurvivalIndexCalculator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/View/PlayerLifeView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/View/GameStartAnimation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/System/Map/MapSystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/View/DoorKeyView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/System/Map/MapField.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/View/DifficultyView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/View/VitalIndexView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/System/Map/Tile.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/Map/EntityMapGraphConverter.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/Map/EntityGraph.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/EntityStatus.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/ControlChanceDetector.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/Map/MapGraphConverter.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/Map/MapGraph.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/Map/Graph.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Helper/Dijkstra.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/MonsterBrain.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Judge/Clear/ClearJudger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Resources/Game/Map/map_raw.txt" />
+        <option value="$PROJECT_DIR$/Assets/Resources/Game/Map/map_1.txt" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/View/DifficultyDisplay.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/View/VitalIndexView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/View/KeyView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Presentation/KilledAnimationPlayer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/View/DifficultyView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Presentation/LifeViewUpdater.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Key/Key.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Entity.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/Map/GraphConverter.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/SurvivalIndexCalculator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Game.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/Presentation/VitalIndexViewUpdater.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/System/DoorKey/DoorKeySystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/System/PlayerLife/PlayerLifeSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/System/Phase/PhaseSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/System/Phase/Elements/StartPhase.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/System/Phase/Elements/ActivePhase.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Map/Tile.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Map/GameMap.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Logic/MonsterCollisionChecker.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Logic/DoorKeyCollisionChecker.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Logic/CollisionChecker.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Logic/CollisionDetecter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Player.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Player/Logic/CollisionDetector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/View/DoorKeyViewItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/View/PlayerLifeViewItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/View/PlayerLifeView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/View/DoorKeyView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/View/GameStartAnimation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/DoorKey/DoorKey.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Map/Logic/TileLoader.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Map/MapSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/System/Map/MapSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/System/Phase/Elements/PlayerDeathPhase.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/System/Camera/FollowPlayerCamera.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Logic/ControlChecker.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Logic/MoveUpdateResult.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Logic/MoveUpdater.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Status/MoveControlStatus.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Status/MoveStatus.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Status/MoveControl.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Presentation/AnimatorParameter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Presentation/AnimationUpdater.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Store/MoveSpeedStore.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Functions/Logic/MoveChecker.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/System/GameSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/GameActivator.cs" />
       </list>
     </option>
   </component>
@@ -81,8 +276,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.3498078" />
-    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.29983526" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.29956663" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -130,6 +325,8 @@
       <workItem from="1604016945771" duration="84000" />
       <workItem from="1604017080475" duration="8054000" />
       <workItem from="1604028881871" duration="2474000" />
+      <workItem from="1604042696927" duration="13191000" />
+      <workItem from="1604086835047" duration="11828000" />
     </task>
     <servers />
   </component>
@@ -168,101 +365,105 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="607" y="298" width="706" height="448" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1604017023025" />
-    <state x="681" y="366" width="794" height="404" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1604017353963">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="722" y="327" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604081138384">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="722" y="327" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1604081138384" />
+    <state x="681" y="370" width="794" height="404" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1604125198589">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="681" y="366" width="794" height="404" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.0.1920.1040@0.0.1920.1040" timestamp="1604017353963" />
-    <state x="681" y="370" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1603900430175" />
-    <state width="471" height="617" key="DebuggerActiveHint" timestamp="1603951315596">
+    <state x="681" y="370" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1604125198589" />
+    <state width="471" height="617" key="DebuggerActiveHint" timestamp="1604048377078">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="470" height="611" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1603849513101" />
-    <state width="471" height="617" key="DebuggerActiveHint/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1603951315596" />
-    <state width="1860" height="356" key="GridCell.Tab.0.bottom" timestamp="1604027651354">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="471" height="617" key="DebuggerActiveHint/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1604048377078" />
+    <state width="1877" height="379" key="GridCell.Tab.0.bottom" timestamp="1604086823759">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1860" height="356" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604027651354" />
-    <state width="1877" height="379" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1603981940118" />
-    <state width="1860" height="356" key="GridCell.Tab.0.center" timestamp="1604027651350">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="379" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1604086823759" />
+    <state width="1877" height="379" key="GridCell.Tab.0.center" timestamp="1604086823759">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1860" height="356" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604027651350" />
-    <state width="1877" height="379" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1603981940117" />
-    <state width="1860" height="356" key="GridCell.Tab.0.left" timestamp="1604027651347">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="379" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1604086823759" />
+    <state width="1877" height="379" key="GridCell.Tab.0.left" timestamp="1604086823758">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1860" height="356" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604027651347" />
-    <state width="1877" height="379" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1603981940117" />
-    <state width="1860" height="356" key="GridCell.Tab.0.right" timestamp="1604027651352">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="379" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1604086823758" />
+    <state width="1877" height="379" key="GridCell.Tab.0.right" timestamp="1604086823759">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1860" height="356" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604027651352" />
-    <state width="1877" height="379" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1603981940117" />
-    <state width="1860" height="356" key="GridCell.Tab.1.bottom" timestamp="1604027651367">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="379" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1604086823759" />
+    <state width="1877" height="379" key="GridCell.Tab.1.bottom" timestamp="1604086823759">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1860" height="356" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604027651367" />
-    <state width="1877" height="379" key="GridCell.Tab.1.bottom/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1603981940118" />
-    <state width="1860" height="356" key="GridCell.Tab.1.center" timestamp="1604027651358">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="379" key="GridCell.Tab.1.bottom/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1604086823759" />
+    <state width="1877" height="379" key="GridCell.Tab.1.center" timestamp="1604086823759">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1860" height="356" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604027651358" />
-    <state width="1877" height="379" key="GridCell.Tab.1.center/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1603981940118" />
-    <state width="1860" height="356" key="GridCell.Tab.1.left" timestamp="1604027651356">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="379" key="GridCell.Tab.1.center/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1604086823759" />
+    <state width="1877" height="379" key="GridCell.Tab.1.left" timestamp="1604086823759">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1860" height="356" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604027651356" />
-    <state width="1877" height="379" key="GridCell.Tab.1.left/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1603981940118" />
-    <state width="1860" height="356" key="GridCell.Tab.1.right" timestamp="1604027651366">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="379" key="GridCell.Tab.1.left/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1604086823759" />
+    <state width="1877" height="379" key="GridCell.Tab.1.right" timestamp="1604086823759">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1860" height="356" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604027651366" />
-    <state width="1877" height="379" key="GridCell.Tab.1.right/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1603981940118" />
-    <state width="1860" height="356" key="GridCell.Tab.2.bottom" timestamp="1604027651380">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="379" key="GridCell.Tab.1.right/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1604086823759" />
+    <state width="1877" height="379" key="GridCell.Tab.2.bottom" timestamp="1604086823759">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1860" height="356" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604027651380" />
-    <state width="1877" height="379" key="GridCell.Tab.2.bottom/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1603981940118" />
-    <state width="1860" height="356" key="GridCell.Tab.2.center" timestamp="1604027651377">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="379" key="GridCell.Tab.2.bottom/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1604086823759" />
+    <state width="1877" height="379" key="GridCell.Tab.2.center" timestamp="1604086823759">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1860" height="356" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604027651377" />
-    <state width="1877" height="379" key="GridCell.Tab.2.center/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1603981940118" />
-    <state width="1860" height="356" key="GridCell.Tab.2.left" timestamp="1604027651370">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="379" key="GridCell.Tab.2.center/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1604086823759" />
+    <state width="1877" height="379" key="GridCell.Tab.2.left" timestamp="1604086823759">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1860" height="356" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604027651370" />
-    <state width="1877" height="379" key="GridCell.Tab.2.left/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1603981940118" />
-    <state width="1860" height="356" key="GridCell.Tab.2.right" timestamp="1604027651379">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="379" key="GridCell.Tab.2.left/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1604086823759" />
+    <state width="1877" height="379" key="GridCell.Tab.2.right" timestamp="1604086823759">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1860" height="356" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604027651379" />
-    <state width="1877" height="379" key="GridCell.Tab.2.right/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1603981940118" />
-    <state width="1860" height="356" key="GridCell.Tab.3.bottom" timestamp="1604027651384">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="379" key="GridCell.Tab.2.right/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1604086823759" />
+    <state width="1877" height="379" key="GridCell.Tab.3.bottom" timestamp="1604086823759">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1860" height="356" key="GridCell.Tab.3.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604027651384" />
-    <state width="1877" height="379" key="GridCell.Tab.3.bottom/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1603981940118" />
-    <state width="1860" height="356" key="GridCell.Tab.3.center" timestamp="1604027651383">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="379" key="GridCell.Tab.3.bottom/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1604086823759" />
+    <state width="1877" height="379" key="GridCell.Tab.3.center" timestamp="1604086823759">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1860" height="356" key="GridCell.Tab.3.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604027651383" />
-    <state width="1877" height="379" key="GridCell.Tab.3.center/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1603981940118" />
-    <state width="1860" height="356" key="GridCell.Tab.3.left" timestamp="1604027651381">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="379" key="GridCell.Tab.3.center/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1604086823759" />
+    <state width="1877" height="379" key="GridCell.Tab.3.left" timestamp="1604086823759">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1860" height="356" key="GridCell.Tab.3.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604027651381" />
-    <state width="1877" height="379" key="GridCell.Tab.3.left/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1603981940118" />
-    <state width="1860" height="356" key="GridCell.Tab.3.right" timestamp="1604027651384">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="379" key="GridCell.Tab.3.left/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1604086823759" />
+    <state width="1877" height="379" key="GridCell.Tab.3.right" timestamp="1604086823759">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1860" height="356" key="GridCell.Tab.3.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604027651384" />
-    <state width="1877" height="379" key="GridCell.Tab.3.right/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1603981940118" />
-    <state x="348" y="0" width="1135" height="909" key="SettingsEditor" timestamp="1604017514022">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="379" key="GridCell.Tab.3.right/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1604086823759" />
+    <state x="899" y="209" width="1135" height="909" key="SettingsEditor" timestamp="1604119959825">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="348" y="0" width="1135" height="909" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1604017514022" />
-    <state x="899" y="209" width="983" height="708" key="SettingsEditor/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1603946275462" />
+    <state x="899" y="209" width="983" height="708" key="SettingsEditor/0.0.1920.1050/1920.0.1600.870@0.0.1920.1050" timestamp="1604119959825" />
     <state x="510" y="261" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1603981851030">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -273,23 +474,6 @@
     <state x="453" y="0" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1603760963339" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/SurvivalIndexCalculator.cs</url>
-          <line>161</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Game/Entity/Drived/Monster/Brain/SurvivalIndexCalculator.cs" initialLine="161">
-            <startOffsets>
-              <option value="7874" />
-            </startOffsets>
-            <endOffsets>
-              <option value="7901" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Type#Hackman.Game.Entity.Monster.Brain.Graph" memberName="Nodes" />

@@ -1,61 +1,55 @@
-using UnityEngine;
 using System;
-using UniRx;
+using Hackman.Game.Map;
+using UnityEngine;
 
-namespace Hackman.Game.Entity {
+namespace Hackman.Game.Entity
+{
     public class Entity : MonoBehaviour
     {
+        [Header("移動")] public float moveSpeed;
 
-        [SerializeField] protected Vector2Int initialDirection;
+        [SerializeField] protected AnimatorParameter animatorParameter;
 
-        [Header("移動")]
-        public float moveSpeed;
+        private AnimationUpdater _animationUpdater;
 
-        [SerializeField]
-        protected Map.MapSystem map;
+        private MoveSpeedStore _moveSpeedStore;
+        private MoveStatus _moveStatus;
 
-        [SerializeField]
-        protected AnimatorParameter animatorParameter;
+        private MoveUpdater _moveUpdater;
+        private MapSystem _map;
+        protected MoveControlStatus MoveControlStatus;
 
-        protected MoveUpdater moveUpdater;
-        protected MoveStatus moveStatus;
-        protected MoveControlStatus moveControlStatus;
-        protected AnimationUpdater animationUpdater;
-        protected MoveSpeedStore moveSpeedStore;
+        public Vector2 Direction => _moveStatus.Direction;
 
-        public Vector2 Direction => moveStatus.Direction;
-        public float Speed => moveStatus.Speed;
-        public MoveControl Control => moveControlStatus.Control;
-
-        public IObservable<MoveControl> OnControlChanged => moveControlStatus.OnControlChanged;
-        public IObservable<float> OnSpeedChanged => moveStatus.OnSpeedChanged;
-        public IObservable<Vector2> OnDirectionChanged => moveStatus.OnDirectionChanged;
-
-        protected virtual void Awake() {
-            moveStatus = new MoveStatus();
-            moveControlStatus = new MoveControlStatus();
-            moveSpeedStore = new MoveSpeedStore(moveSpeed);
-            moveUpdater = new MoveUpdater(moveControlStatus, transform, moveStatus, moveSpeedStore, map);
-            animationUpdater = new AnimationUpdater(animatorParameter, moveStatus);
-            moveStatus.SetDirection(initialDirection);
+        protected virtual void Awake()
+        {
+            _map = FindObjectOfType<MapSystem>();
+            _moveStatus = new MoveStatus();
+            MoveControlStatus = new MoveControlStatus();
+            _moveSpeedStore = new MoveSpeedStore(moveSpeed);
+            _moveUpdater = new MoveUpdater(MoveControlStatus, transform, _moveStatus, _moveSpeedStore, _map);
+            _animationUpdater = new AnimationUpdater(animatorParameter, _moveStatus);
         }
 
-        protected virtual void Start() {
-            moveStatus.SetSpeed(0);
-            moveControlStatus.SetControl(MoveControl.None);
+        protected virtual void Start()
+        {
+            _moveStatus.SetSpeed(0);
+            SetControl(MoveControl.None);
         }
 
-        protected virtual void OnDestroy() {
-            animationUpdater.Dispose();
+        protected virtual void Update()
+        {
+            _moveUpdater.UpdatePosition();
         }
 
-        public void SetControl(MoveControl control) {
-            moveControlStatus.SetControl(control);
+        protected virtual void OnDestroy()
+        {
+            _animationUpdater.Dispose();
         }
 
-        protected virtual void Update() {
-            moveUpdater.UpdatePosition();
+        public void SetControl(MoveControl control)
+        {
+            MoveControlStatus.SetControl(control);
         }
-
     }
 }

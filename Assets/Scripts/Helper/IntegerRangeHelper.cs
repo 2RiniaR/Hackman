@@ -1,4 +1,4 @@
-using UniRx;
+using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
@@ -68,5 +68,16 @@ namespace Hackman {
             return minBorder <= value && value <= maxBorder;
         }
 
+        /// <summary>
+        ///     任意の座標が、マップ上のどのタイル座標に相当するかを返す
+        /// </summary>
+        /// <param name="pos">対象の座標</param>
+        /// <returns>相当するタイル座標</returns>
+        public static IEnumerable<Vector2Int> GetIntegerPositions(Vector2 pos)
+        {
+            var ix = IntegerRangeHelper.GetIntegerRange2(pos.x, pos.x + 1f);
+            var iy = IntegerRangeHelper.GetIntegerRange2(pos.y, pos.y + 1f);
+            return ix.Select(x => iy.Select(y => new Vector2Int(x, y))).SelectMany(x => x).ToArray();
+        }
     }
 }

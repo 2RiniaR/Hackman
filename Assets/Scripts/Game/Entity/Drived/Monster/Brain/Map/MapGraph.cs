@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Hackman.Game.Entity.Monster.Brain
 {
+    /// <summary>
+    ///     マップのタイル情報と離散グラフが結びついた構造体
+    /// </summary>
     public readonly struct MapGraph
     {
         public readonly int NodeCount;
@@ -32,6 +35,29 @@ namespace Hackman.Game.Entity.Monster.Brain
             foreach (var edge in edges)
             foreach (var pos in edge.RoutePositions)
                 Tilemap[pos.x, pos.y] = new MapGraphElement {Type = MapGraphElementType.Edge, Id = edge.Id};
+        }
+
+        public MapGraphElement GetElement(Vector2 position)
+        {
+            // ここで帰ってくる座標には、最大1種類の辺 と 頂点 が格納されていると仮定する
+            var integerPositions = IntegerRangeHelper.GetIntegerPositions(position);
+            var containedMapElement = new MapGraphElement {Type = MapGraphElementType.None, Id = 0};
+            foreach (var tilePos in integerPositions)
+            {
+                var elem = Tilemap[tilePos.x, tilePos.y];
+                if (elem.Type == MapGraphElementType.Edge)
+                {
+                    containedMapElement = elem;
+                    break;
+                }
+
+                if (elem.Type == MapGraphElementType.Node)
+                {
+                    containedMapElement = elem;
+                }
+            }
+
+            return containedMapElement;
         }
     }
 

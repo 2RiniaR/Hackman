@@ -1,17 +1,20 @@
 using UnityEngine;
 
-namespace Hackman.Game.Entity {
-    public class MoveSpeedStore {
-
+namespace Hackman.Game.Entity
+{
+    public class MoveSpeedStore
+    {
         private float moveSpeed;
-        public float MoveSpeed {
-            get { return moveSpeed; }
-            set { moveSpeed = Mathf.Max(0f, value); }
-        }
 
-        public MoveSpeedStore(float value) {
+        public MoveSpeedStore(float value)
+        {
             MoveSpeed = value;
         }
 
+        public float MoveSpeed
+        {
+            get => moveSpeed;
+            set => moveSpeed = Mathf.Max(0f, value);
+        }
     }
 }

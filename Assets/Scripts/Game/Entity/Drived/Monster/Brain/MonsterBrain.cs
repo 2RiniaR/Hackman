@@ -25,7 +25,16 @@ namespace Hackman.Game.Entity.Monster.Brain
 
         private void Update()
         {
-            DebugSurvivalIndex();
+            DebugControlChanceDetection();
+        }
+
+        private void DebugControlChanceDetection()
+        {
+            var playerStatus =
+                new EntityStatus(player.transform.localPosition - new Vector3(.5f, .5f), player.Direction);
+            var monstersStatus = monsters.Select(m =>
+                new EntityStatus(m.transform.localPosition - new Vector3(.5f, .5f), m.Direction));
+            var controlChances = ControlChanceDetector.Detect(_mapGraph, monstersStatus);
         }
 
         private void DebugSurvivalIndex()

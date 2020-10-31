@@ -2,27 +2,28 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using UniRx.Triggers;
+using TMPro;
 using UniRx;
 
 namespace Hackman.Game {
     public class GameStartAnimation : MonoBehaviour {
 
         [SerializeField]
-        private Text displayText = null;
+        private TextMeshProUGUI displayText;
 
         [SerializeField]
-        private Animator animator = null;
+        private Animator animator;
 
         [SerializeField]
         private string animatorTriggerName = "Play";
 
         [SerializeField]
-        private string animatorPlayStateName = "Start";
+        private string animatorPlayStateName = "Play";
 
-        private ObservableStateMachineTrigger animatorTrigger = null;
+        private ObservableStateMachineTrigger _animatorTrigger;
 
         private void Start() {
-            animatorTrigger = animator.GetBehaviour<ObservableStateMachineTrigger>();
+            _animatorTrigger = animator.GetBehaviour<ObservableStateMachineTrigger>();
         }
 
         public void SetText(string text) {
@@ -31,7 +32,7 @@ namespace Hackman.Game {
 
         public void Play(Action finishCallback) {
             animator.SetTrigger(animatorTriggerName);
-            animatorTrigger.OnStateExitAsObservable()
+            _animatorTrigger.OnStateExitAsObservable()
                 .Where(state => state.StateInfo.IsName(animatorPlayStateName))
                 .First()
                 .Subscribe(_ => finishCallback())

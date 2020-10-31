@@ -9,18 +9,6 @@ namespace Hackman.Game.Entity.Monster.Brain
     public class GraphConverter
     {
         /// <summary>
-        ///     任意の座標が、マップ上のどのタイル座標に相当するかを返す
-        /// </summary>
-        /// <param name="pos">対象の座標</param>
-        /// <returns>相当するタイル座標</returns>
-        private static IEnumerable<Vector2Int> GetIntegerPositions(Vector2 pos)
-        {
-            var ix = IntegerRangeHelper.GetIntegerRange2(pos.x, pos.x + 1f);
-            var iy = IntegerRangeHelper.GetIntegerRange2(pos.y, pos.y + 1f);
-            return ix.Select(x => iy.Select(y => new Vector2Int(x, y))).SelectMany(x => x).ToArray();
-        }
-
-        /// <summary>
         ///     任意の座標が、マップグラフ辺の始点からどのくらいの距離にあるかを返す
         /// </summary>
         /// <param name="edge">対象のマップグラフ辺</param>
@@ -52,29 +40,6 @@ namespace Hackman.Game.Entity.Monster.Brain
             return distance;
         }
 
-        private static MapGraphElement GetMapGraphElement(MapGraph graph, Vector2 position)
-        {
-            // ここで帰ってくる座標には、最大1種類の辺 と 頂点 が格納されていると仮定する
-            var integerPositions = GetIntegerPositions(position);
-            var containedMapElement = new MapGraphElement {Type = MapGraphElementType.None, Id = 0};
-            foreach (var tilePos in integerPositions)
-            {
-                var elem = graph.Tilemap[tilePos.x, tilePos.y];
-                if (elem.Type == MapGraphElementType.Edge)
-                {
-                    containedMapElement = elem;
-                    break;
-                }
-
-                if (elem.Type == MapGraphElementType.Node)
-                {
-                    containedMapElement = elem;
-                }
-            }
-
-            return containedMapElement;
-        }
-
         /// <summary>
         ///     任意の座標が、マップグラフ上のどの要素に相当するかを返す
         /// </summary>
@@ -83,13 +48,13 @@ namespace Hackman.Game.Entity.Monster.Brain
         /// <returns>positionがgraph内で相当する要素</returns>
         private static GraphPosition GetGraphPosition(MapGraph graph, Vector2 position, Vector2 direction)
         {
-            var containedMapElement = GetMapGraphElement(graph, position);
+            var containedMapElement = graph.GetElement(position);
 
             switch (containedMapElement.Type)
             {
                 case MapGraphElementType.Node:
                     var forwardEdgeID = -1;
-                    var forwardMapElement = GetMapGraphElement(graph, position + direction);
+                    var forwardMapElement = graph.GetElement(position + direction);
                     if (forwardMapElement.Type == MapGraphElementType.Edge)
                     {
                         foreach (var edgeID in graph.Nodes[containedMapElement.Id].ConnectedEdgesId)

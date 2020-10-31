@@ -1,27 +1,32 @@
-using UnityEngine;
-using UniRx;
 using System;
+using UniRx;
+using UnityEngine;
 
-namespace Hackman.Game.Entity {
-    public class AnimationUpdater : IDisposable {
+namespace Hackman.Game.Entity
+{
+    public class AnimationUpdater : IDisposable
+    {
+        private readonly AnimatorParameter _animatorParameter;
+        private readonly MoveStatus _move;
 
-        private readonly CompositeDisposable onDispose = new CompositeDisposable();
-        private readonly AnimatorParameter animatorParameter;
-        private readonly MoveStatus move;
+        private readonly CompositeDisposable _onDispose = new CompositeDisposable();
 
-        public AnimationUpdater(AnimatorParameter animatorParameter, MoveStatus move) {
-            this.animatorParameter = animatorParameter;
-            move.OnDirectionChanged.Subscribe(SetDirection).AddTo(onDispose);
+        public AnimationUpdater(AnimatorParameter animatorParameter, MoveStatus move)
+        {
+            _animatorParameter = animatorParameter;
+            move.OnDirectionChanged.Subscribe(SetDirection).AddTo(_onDispose);
         }
 
-        public void Dispose() {
-            onDispose.Dispose();
+        public void Dispose()
+        {
+            _onDispose.Dispose();
         }
 
-        private void SetDirection(Vector2 direction) {
-            animatorParameter._animator.SetFloat(animatorParameter.HorizontalName, direction.x);
-            animatorParameter._animator.SetFloat(animatorParameter.VerticalName, direction.y);
+        private void SetDirection(Vector2 direction)
+        {
+            if (_animatorParameter.animator == null) return;
+            _animatorParameter.animator.SetFloat(_animatorParameter.horizontalName, direction.x);
+            _animatorParameter.animator.SetFloat(_animatorParameter.verticalName, direction.y);
         }
-
     }
 }

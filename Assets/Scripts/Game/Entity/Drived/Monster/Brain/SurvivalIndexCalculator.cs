@@ -49,20 +49,13 @@ namespace Hackman.Game.Entity.Monster.Brain
             // 探索の際に無視するエッジを(開始ノードID, 終了ノードID)の順番で格納する
             // プレイヤーの経路距離を計算するとき、任意のノードからモンスターのノードへ向かうエッジを除く
             // (プレイヤーはモンスターと重なるとゲームオーバーになってしまうため)
-            var ignoreEdges = monstersNode.Select(m =>
-                {
-                    var forwardEdge = graph.Edges[m.ForwardEdgeID];
-                    var forwardNodeID = forwardEdge.StartNodeId != m.NodeID ? forwardEdge.StartNodeId : forwardEdge.EndNodeId;
-                    return (forwardNodeID, m.NodeID);
-                }
-            );
+            var ignoreEdges = monstersNode.SelectMany(m => graph.Nodes[m.NodeID].ConnectedEdgesId);
 
             foreach (var edge in graph.Edges)
             {
-                if (!ignoreEdges.Contains((edge.StartNodeId, edge.EndNodeId)))
-                    dijkstraEdges[edge.StartNodeId].Add(new Dijkstra.Edge(edge.EndNodeId, edge.Weight));
-                if (!ignoreEdges.Contains((edge.EndNodeId, edge.StartNodeId)))
-                    dijkstraEdges[edge.EndNodeId].Add(new Dijkstra.Edge(edge.StartNodeId, edge.Weight));
+                if (ignoreEdges.Contains(edge.ID)) continue;
+                dijkstraEdges[edge.StartNodeId].Add(new Dijkstra.Edge(edge.EndNodeId, edge.Weight));
+                dijkstraEdges[edge.EndNodeId].Add(new Dijkstra.Edge(edge.StartNodeId, edge.Weight));
             }
 
             var dijkstraGraph = new Dijkstra.Graph(dijkstraEdges.Select(s => s.ToArray()).ToArray(), graph.NodeCount);

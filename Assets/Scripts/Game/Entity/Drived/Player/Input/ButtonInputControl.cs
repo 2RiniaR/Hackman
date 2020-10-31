@@ -4,30 +4,34 @@ using UnityEngine.InputSystem;
 namespace Hackman.Game.Entity.Player {
     public class ButtonInputControl : IInputControl {
 
-        private DebugInput input = new DebugInput();
-        private readonly MoveControlStatus moveControl;
+        private readonly DebugInput _input = new DebugInput();
+        private readonly MoveControlStatus _moveControl;
 
         public ButtonInputControl(MoveControlStatus moveControl) {
-            this.moveControl = moveControl;
-            input.Player.Move.started += OnMoveControl;
-            input.Enable();
+            _moveControl = moveControl;
+            _input.Player.Move.started += OnMoveControl;
         }
 
         public void Dispose() {
-            input.Disable();
-            input.Player.Move.started -= OnMoveControl;
+            _input.Player.Move.started -= OnMoveControl;
+        }
+
+        public void SetEnable(bool isEnable)
+        {
+            if (isEnable) _input.Enable();
+            else _input.Disable();
         }
 
         private void OnMoveControl(InputAction.CallbackContext context) {
-            Vector2 direction = context.ReadValue<Vector2>();
+            var direction = context.ReadValue<Vector2>();
             if (direction.x > 0) {
-                moveControl.SetControl(MoveControl.DirectionRight);
+                _moveControl.SetControl(MoveControl.DirectionRight);
             } else if (direction.x < 0) {
-                moveControl.SetControl(MoveControl.DirectionLeft);
+                _moveControl.SetControl(MoveControl.DirectionLeft);
             } else if (direction.y > 0) {
-                moveControl.SetControl(MoveControl.DirectionUp);
+                _moveControl.SetControl(MoveControl.DirectionUp);
             } else if (direction.y < 0) {
-                moveControl.SetControl(MoveControl.DirectionDown);
+                _moveControl.SetControl(MoveControl.DirectionDown);
             }
         }
 

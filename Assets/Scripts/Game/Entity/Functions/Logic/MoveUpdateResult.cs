@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace Hackman.Game.Entity {
-    public struct MoveUpdateResult {
+    public readonly struct MoveUpdateResult {
 
         public readonly Vector2 BeforePosition;
         public readonly Vector2 MoveRequestedVector;
@@ -11,7 +11,7 @@ namespace Hackman.Game.Entity {
         public readonly Vector2 AfterPosition;
         public readonly Vector2 MoveResultVector;
 
-        MoveUpdateResult(Vector2 beforePosition, Vector2 moveRequestedVector, MoveControl requestedMoveControl, Vector2 afterPosition) {
+        private MoveUpdateResult(Vector2 beforePosition, Vector2 moveRequestedVector, MoveControl requestedMoveControl, Vector2 afterPosition) {
             BeforePosition = beforePosition;
             MoveRequestedVector = moveRequestedVector;
             RequestedMoveControl = requestedMoveControl;

@@ -1,53 +1,43 @@
-using UnityEngine;
 using System;
 using UniRx;
+using UniRx.Triggers;
+using UnityEngine;
 
-namespace Hackman.Game.Entity.Player {
-    public class Player : Entity {
+namespace Hackman.Game.Entity.Player
+{
+    public class Player : Entity
+    {
+        private IInputControl _inputControl;
+        private CollisionDetector _collisionDetector;
+        public IObservable<Entity> OnCollision => _collisionDetector.OnCollision;
 
-        [SerializeField]
-        private int initialLife = 3;
-
-        [SerializeField]
-        protected PlayerLifeDisplay lifeDisplay;
-
-        private readonly Subject<Unit> onKilled = new Subject<Unit>();
-        public IObservable<Unit> OnKilled => onKilled;
-
-        private IInputControl inputControl;
-        private DotEater dotEater;
-        private LifeStatus lifeStatus;
-        private LifeUpdater lifeUpdater;
-        private MonsterCollisionChecker monsterCollisionChecker;
-        private LifeDisplayUpdater lifeDisplayUpdater;
-
-        protected override void Awake() {
+        protected override void Awake()
+        {
             base.Awake();
-            inputControl = new ButtonInputControl(moveControlStatus);
-            dotEater = new DotEater(map, moveUpdater);
-            lifeStatus = new LifeStatus();
-            monsterCollisionChecker = new MonsterCollisionChecker(onKilled, transform);
-            lifeUpdater = new LifeUpdater(onKilled, lifeStatus);
-            lifeDisplayUpdater = new LifeDisplayUpdater(lifeDisplay, lifeStatus);
-            lifeStatus.SetLife(initialLife);
+            _inputControl = new ButtonInputControl(MoveControlStatus);
+            _collisionDetector = new CollisionDetector(transform);
         }
 
-        protected override void OnDestroy() {
-            lifeDisplayUpdater.Dispose();
-            lifeUpdater.Dispose();
-            dotEater.Dispose();
-            inputControl.Dispose();
+        private void OnEnable()
+        {
+            _inputControl.SetEnable(true);
+        }
+
+        private void OnDisable()
+        {
+            _inputControl.SetEnable(false);
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+            _collisionDetector.CheckCollision();
+        }
+
+        protected override void OnDestroy()
+        {
+            _inputControl.Dispose();
             base.OnDestroy();
         }
-
-        protected override void Update() {
-            base.Update();
-            monsterCollisionChecker.CheckCollision();
-        }
-
-        public void Kill() {
-            onKilled.OnNext(Unit.Default);
-        }
-
     }
 }

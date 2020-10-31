@@ -26,7 +26,7 @@ namespace Hackman.Game.Entity.Monster.Brain
         /// <summary>
         ///     移動可能なタイル
         /// </summary>
-        private static readonly Tile[] MovableTiles = {Tile.Dot, Tile.PowerCookie, Tile.Floor};
+        private static readonly Tile[] MovableTiles = {Tile.Floor};
 
         private readonly Dictionary<int, List<int>> _edgeRegisters = new Dictionary<int, List<int>>();
         private readonly List<MapGraphEdge> _edges = new List<MapGraphEdge>();

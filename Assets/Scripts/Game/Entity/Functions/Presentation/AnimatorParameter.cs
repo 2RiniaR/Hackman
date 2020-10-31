@@ -1,11 +1,13 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 
-namespace Hackman.Game.Entity {
+namespace Hackman.Game.Entity
+{
     [Serializable]
-    public struct AnimatorParameter {
-        public Animator _animator;
-        public string HorizontalName;
-        public string VerticalName;
+    public struct AnimatorParameter
+    {
+        public Animator animator;
+        public string horizontalName;
+        public string verticalName;
     }
 }
