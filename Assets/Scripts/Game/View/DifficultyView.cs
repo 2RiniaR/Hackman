@@ -1,15 +1,15 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-namespace Hackman.Game {
-    public class DifficultyView : MonoBehaviour {
+namespace Game.View
+{
+    public class DifficultyView : MonoBehaviour
+    {
+        [SerializeField] private TextMeshProUGUI lifeCountText;
 
-        [SerializeField]
-        private TextMeshProUGUI lifeCountText = null;
-
-        public void SetValue(int count) {
+        public void SetValue(int count)
+        {
             lifeCountText.text = count.ToString();
         }
-
     }
 }

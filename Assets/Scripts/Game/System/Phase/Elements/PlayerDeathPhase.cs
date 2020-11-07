@@ -1,22 +1,19 @@
 using UnityEngine;
-using System.Collections;
-using Hackman.Game.Entity;
 
-namespace Hackman.Game.Phase {
-    public class PlayerDeathPhase : PhaseElement {
-
-        public override void Activate() {
+namespace Game.System.Phase.Elements
+{
+    public class PlayerDeathPhase : PhaseElement
+    {
+        public override void Activate()
+        {
             var entities = Object.FindObjectsOfType<Entity.Entity>();
-            foreach (var entity in entities) {
-                entity.enabled = false;
-            }
+            foreach (var entity in entities) entity.enabled = false;
             var phaseSystem = Object.FindObjectOfType<PhaseSystem>();
             phaseSystem.SetPhase(Phase.GameStart);
         }
 
-        public override void Deactivate() {
-
+        public override void Deactivate()
+        {
         }
-
     }
 }

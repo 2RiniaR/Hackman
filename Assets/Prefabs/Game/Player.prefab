@@ -109,15 +109,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4809090053438612421}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e62e87370d0c1814c9e9bba0d3d14b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 8
-  map: {fileID: 0}
+  moveSpeed: 3
   animatorParameter:
     animator: {fileID: 4809090053438612416}
     horizontalName: Horizontal
     verticalName: Vertical
-  _initialDirection: {x: 0, y: 0}

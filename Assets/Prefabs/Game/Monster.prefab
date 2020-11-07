@@ -115,9 +115,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  map: {fileID: 0}
   animatorParameter:
     animator: {fileID: 8886491506191792729}
     horizontalName: Horizontal
     verticalName: Vertical
-  _initialDirection: {x: 0, y: 0}
+  controlCoolTimeLeft: 0

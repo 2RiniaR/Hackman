@@ -95,9 +95,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69709c5fd3644167a032c1fbb31b97f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 5092154603790332089}
+  MoveSpeed: 0
+  animatorParameter:
+    animator: {fileID: 0}
+    horizontalName: 
+    verticalName: 
+  animator: {fileID: 5092154603790332089}
   openAnimatorVariableName: isOpened
-  IsOpened:
+  isOpened:
     value: 0
 --- !u!95 &5092154603790332089
 Animator:

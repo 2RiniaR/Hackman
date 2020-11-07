@@ -1,9 +1,14 @@
 using System;
 
-namespace Hackman.Game.Phase {
-    public abstract class PhaseElement : IDisposable {
+namespace Game.System.Phase.Elements
+{
+    public abstract class PhaseElement : IDisposable
+    {
+        public virtual void Dispose()
+        {
+        }
+
         public abstract void Activate();
         public abstract void Deactivate();
-        public virtual void Dispose() {}
     }
 }

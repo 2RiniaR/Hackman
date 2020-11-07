@@ -1,10 +1,9 @@
-namespace Hackman.Game.Map
+namespace Game.System.Map
 {
     public enum Tile
     {
         None,
         Floor,
-        Wall,
-        Door
+        Wall
     }
 }

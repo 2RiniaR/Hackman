@@ -1,37 +1,30 @@
 using System;
 using System.Collections.Generic;
+using Game.System.Map.Logic;
+using Game.System.Map.Presentation;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Hackman.Game.Map
+namespace Game.System.Map
 {
     public class MapSystem : MonoBehaviour
     {
-        [SerializeField] private Tilemap tilemap;
+        public Tilemap tilemap;
 
-        [SerializeField] private List<TileBase> tiles;
+        public List<TileBase> tiles;
 
-        [SerializeField] public Vector2 respawnPlayerPosition;
-
-        private readonly FieldStore _fieldStore = new FieldStore();
         private TileDrawer _tileDrawer;
-
-        public MapField Field => _fieldStore.Field;
+        public readonly ReactiveProperty<MapField> Field = new ReactiveProperty<MapField>();
 
         private void Awake()
         {
-            _tileDrawer = new TileDrawer(_fieldStore, tilemap, tiles);
+            _tileDrawer = new TileDrawer(this);
         }
 
         public void SetMap(GameMap map)
         {
-            _fieldStore.SetField(TileLoader.LoadTile(map.ResourcePath));
-            respawnPlayerPosition = map.RespawnPlayerPosition;
-        }
-
-        private void OnDestroy()
-        {
-            _tileDrawer.Dispose();
+            Field.Value = new MapField(TileLoader.LoadTile(map.resourcePath));
         }
     }
 }

@@ -1,12 +1,16 @@
+using Game.View;
+using Hackman;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-namespace Hackman.Game.Phase {
-    public class GameOverPhase : PhaseElement {
+namespace Game.System.Phase.Elements
+{
+    public class GameOverPhase : PhaseElement
+    {
+        private const string StartGameSceneName = "StartScene";
 
         private readonly DebugInput _input;
-        private const string StartGameSceneName = "StartScene";
 
         public GameOverPhase()
         {
@@ -14,15 +18,14 @@ namespace Hackman.Game.Phase {
             _input.UI.Submit.started += OnSubmit;
         }
 
-        public override void Activate() {
+        public override void Activate()
+        {
             var gameOverAnimation = Object.FindObjectOfType<GameOverAnimation>();
-            gameOverAnimation.Play(() => {
-                _input.Enable();
-            });
+            gameOverAnimation.Play(() => { _input.Enable(); });
         }
 
-        public override void Deactivate() {
-
+        public override void Deactivate()
+        {
         }
 
         private void OnSubmit(InputAction.CallbackContext context)

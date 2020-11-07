@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Game.System.Phase.Elements;
 using UniRx;
 using UnityEngine;
 
-namespace Hackman.Game.Phase
+namespace Game.System.Phase
 {
     public class PhaseSystem : MonoBehaviour
     {
         [SerializeField] private Phase initialPhase = Phase.GameStart;
 
-        private ReadOnlyDictionary<Phase, PhaseElement> _elements;
-
         private readonly ReactiveProperty<Phase> _phase = new ReactiveProperty<Phase>();
+
+        private ReadOnlyDictionary<Phase, PhaseElement> _elements;
 
         private void Start()
         {
@@ -29,18 +29,18 @@ namespace Hackman.Game.Phase
             SetPhase(initialPhase);
         }
 
+        private void OnDestroy()
+        {
+            foreach (var element in _elements.Values)
+                element.Dispose();
+        }
+
         public void SetPhase(Phase phase)
         {
             if (_phase.Value == phase) return;
             if (_elements.TryGetValue(_phase.Value, out var previousElement)) previousElement.Deactivate();
             if (_elements.TryGetValue(phase, out var afterElement)) afterElement.Activate();
             _phase.Value = phase;
-        }
-
-        private void OnDestroy()
-        {
-            foreach (var element in _elements.Values)
-                element.Dispose();
         }
     }
 }

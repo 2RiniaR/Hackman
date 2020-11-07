@@ -1,4 +1,4 @@
-namespace Hackman.Game.Map
+namespace Game.System.Map
 {
     public readonly struct MapElement
     {

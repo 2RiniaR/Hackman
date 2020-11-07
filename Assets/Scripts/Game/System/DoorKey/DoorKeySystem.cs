@@ -1,24 +1,24 @@
-﻿using System;
+﻿using Game.View;
 using UniRx;
 using UnityEngine;
 
-namespace Hackman.Game.DoorKey
+namespace Game.System.DoorKey
 {
     public class DoorKeySystem : MonoBehaviour
     {
-        private int maxKeyCount;
         public IntReactiveProperty keyCount;
         [SerializeField] private DoorKeyView view;
+        private int _maxKeyCount;
 
         private void Awake()
         {
             keyCount.Subscribe(OnKeyCountChanged).AddTo(this);
-            maxKeyCount = keyCount.Value;
+            _maxKeyCount = keyCount.Value;
         }
 
         private void OnKeyCountChanged(int count)
         {
-            view.SetCount(maxKeyCount - count);
+            view.SetCount(_maxKeyCount - count);
         }
     }
 }

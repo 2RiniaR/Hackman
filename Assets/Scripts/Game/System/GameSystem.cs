@@ -1,15 +1,15 @@
-using Hackman.Game.DoorKey;
-using Hackman.Game.Entity;
-using Hackman.Game.Entity.Goal;
-using Hackman.Game.Entity.Monster;
-using Hackman.Game.Entity.Player;
-using Hackman.Game.Map;
-using Hackman.Game.Phase;
-using Hackman.Game.PlayerLife;
+using Game.Entity;
+using Game.Entity.Goal;
+using Game.Entity.Monster;
+using Game.Entity.Player;
+using Game.System.DoorKey;
+using Game.System.Map;
+using Game.System.Phase;
+using Game.System.PlayerLife;
 using UniRx;
 using UnityEngine;
 
-namespace Hackman.Game
+namespace Game.System
 {
     public class GameSystem : MonoBehaviour
     {
@@ -23,7 +23,8 @@ namespace Hackman.Game
         [SerializeField] private Goal goalPrefab;
         [SerializeField] private Transform entityParent;
 
-        private Goal goal;
+        private EntityPosition _playerRespawnPosition;
+        private Goal _goal;
 
         private void Start()
         {
@@ -55,13 +56,15 @@ namespace Hackman.Game
         /// <param name="map">使用するマップ</param>
         private void Initialize(GameMap map)
         {
-            player.transform.localPosition = map.StartPlayerPosition + new Vector2(.5f, .5f);
+            player.transform.localPosition = map.startPlayerPosition + Entity.Entity.Size / 2;
             mapSystem.SetMap(map);
-            foreach (var pos in map.MonstersPosition)
-                Instantiate(monsterPrefab, pos + new Vector2(.5f, .5f), Quaternion.identity, entityParent);
-            foreach (var pos in map.KeysPosition)
-                Instantiate(doorKeyPrefab, pos + new Vector2(.5f, .5f), Quaternion.identity, entityParent);
-            goal = Instantiate(goalPrefab, map.GoalPosition + new Vector2(.5f, .5f), Quaternion.identity, entityParent);
+            _playerRespawnPosition = EntityPosition.FromVector(map.respawnPlayerPosition);
+            // foreach (var pos in map.monstersPosition)
+            //     Instantiate(monsterPrefab, pos + Entity.Entity.Size / 2, Quaternion.identity, entityParent);
+            // foreach (var pos in map.keysPosition)
+            //     Instantiate(doorKeyPrefab, pos + Entity.Entity.Size / 2, Quaternion.identity, entityParent);
+            // _goal = Instantiate(goalPrefab, map.goalPosition + Entity.Entity.Size / 2, Quaternion.identity,
+            //     entityParent);
         }
 
         /// <summary>
@@ -90,8 +93,8 @@ namespace Hackman.Game
             }
 
             // プレイヤーを初期位置まで戻し、操作をリセットする
-            player.transform.localPosition = mapSystem.respawnPlayerPosition + new Vector2(.5f, .5f);
-            player.SetControl(MoveControl.Stop);
+            player.transform.localPosition = _playerRespawnPosition.GetVector() + Entity.Entity.Size / 2;
+            player.CurrentControl.Value = new EntityControl(ControlPattern.Stop);
             phaseSystem.SetPhase(Phase.Phase.PlayerDeath);
             --playerLifeSystem.lifeCount.Value;
         }
@@ -109,7 +112,7 @@ namespace Hackman.Game
         /// </summary>
         private void OnDoorKeyCountZero()
         {
-            goal.isOpened.Value = true;
+            _goal.isOpened.Value = true;
         }
 
         private void OnCollisionToOpenedGoal()

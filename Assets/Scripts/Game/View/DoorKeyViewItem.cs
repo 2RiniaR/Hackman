@@ -1,10 +1,10 @@
 using UnityEngine;
 
-namespace Hackman.Game {
-    public class DoorKeyViewItem : MonoBehaviour {
-
-        [SerializeField]
-        private Animator animator;
+namespace Game.View
+{
+    public class DoorKeyViewItem : MonoBehaviour
+    {
+        [SerializeField] private Animator animator;
 
         [SerializeField] private string showAnimatorVariableName = "isShow";
 
@@ -12,6 +12,5 @@ namespace Hackman.Game {
         {
             animator.SetBool(showAnimatorVariableName, isShow);
         }
-
     }
 }

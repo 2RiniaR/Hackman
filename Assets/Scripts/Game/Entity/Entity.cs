@@ -1,40 +1,28 @@
-using System;
-using Hackman.Game.Map;
+using Game.System;
+using Game.System.Map;
+using UniRx;
 using UnityEngine;
 
-namespace Hackman.Game.Entity
+namespace Game.Entity
 {
     public class Entity : MonoBehaviour
     {
-        [Header("移動")] public float moveSpeed;
-
-        [SerializeField] protected AnimatorParameter animatorParameter;
+        public float moveSpeed;
+        public readonly ReactiveProperty<EntityControl> CurrentControl = new ReactiveProperty<EntityControl>(EntityControl.None);
+        public readonly ReactiveProperty<Action> CurrentAction = new ReactiveProperty<Action>(new Action(ActionPattern.Stop));
+        public Direction CurrentDirection => CurrentAction.Value.GetDirection();
+        public static readonly Vector2 Size = Vector2.one;
+        public AnimatorParameter animatorParameter;
 
         private AnimationUpdater _animationUpdater;
-
-        private MoveSpeedStore _moveSpeedStore;
-        private MoveStatus _moveStatus;
-
-        private MoveUpdater _moveUpdater;
         private MapSystem _map;
-        protected MoveControlStatus MoveControlStatus;
-
-        public Vector2 Direction => _moveStatus.Direction;
+        private MoveUpdater _moveUpdater;
 
         protected virtual void Awake()
         {
             _map = FindObjectOfType<MapSystem>();
-            _moveStatus = new MoveStatus();
-            MoveControlStatus = new MoveControlStatus();
-            _moveSpeedStore = new MoveSpeedStore(moveSpeed);
-            _moveUpdater = new MoveUpdater(MoveControlStatus, transform, _moveStatus, _moveSpeedStore, _map);
-            _animationUpdater = new AnimationUpdater(animatorParameter, _moveStatus);
-        }
-
-        protected virtual void Start()
-        {
-            _moveStatus.SetSpeed(0);
-            SetControl(MoveControl.None);
+            _moveUpdater = new MoveUpdater(this, _map);
+            _animationUpdater = new AnimationUpdater(this);
         }
 
         protected virtual void Update()
@@ -42,14 +30,14 @@ namespace Hackman.Game.Entity
             _moveUpdater.UpdatePosition();
         }
 
-        protected virtual void OnDestroy()
+        public EntityPosition GetEntityPosition()
         {
-            _animationUpdater.Dispose();
+            return EntityPosition.FromVector((Vector2)transform.localPosition - Size / 2f);
         }
 
-        public void SetControl(MoveControl control)
+        public void SetEntityPosition(EntityPosition position)
         {
-            MoveControlStatus.SetControl(control);
+            transform.localPosition = position.GetVector() + Size / 2f;
         }
     }
 }

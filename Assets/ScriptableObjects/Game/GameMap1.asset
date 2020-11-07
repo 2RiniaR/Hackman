@@ -12,17 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da33d67ea6e45799469053b90d59a86, type: 3}
   m_Name: GameMap1
   m_EditorClassIdentifier: 
-  ResourcePath: Game/Map/map_1
-  StartPlayerPosition: {x: 1, y: 1}
-  RespawnPlayerPosition: {x: 1, y: 1}
-  MonstersPosition:
-  - {x: 1, y: 13}
-  - {x: 13, y: 1}
-  - {x: 6, y: 25}
-  - {x: 25, y: 13}
-  KeysPosition:
-  - {x: 3, y: 1}
-  - {x: 5, y: 1}
-  - {x: 1, y: 4}
-  - {x: 1, y: 6}
-  GoalPosition: {x: 7, y: 7}
+  resourcePath: Game/Map/map_3
+  startPlayerPosition: {x: 14, y: 15}
+  respawnPlayerPosition: {x: 14, y: 15}
+  monstersPosition:
+  - {x: 1, y: 1}
+  keysPosition:
+  - {x: 1, y: 2}
+  goalPosition: {x: 1, y: 3}

@@ -1,8 +1,8 @@
-﻿using Hackman.Game;
-using Hackman.Game.Map;
+﻿using Game.System;
+using Game.System.Map;
 using UnityEngine;
 
-namespace Hackman.Scenes.MainGame
+namespace Scenes.MainGame
 {
     public class GameActivator : MonoBehaviour
     {

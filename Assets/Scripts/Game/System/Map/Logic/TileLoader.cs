@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using UnityEngine;
 
-namespace Hackman.Game.Map
+namespace Game.System.Map.Logic
 {
     public static class TileLoader
     {

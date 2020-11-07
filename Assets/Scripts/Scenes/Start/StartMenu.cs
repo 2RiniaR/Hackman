@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Hackman;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-namespace Hackman.Scenes.Start
+namespace Scenes.Start
 {
     public class StartMenu : MonoBehaviour
     {

@@ -1,7 +1,8 @@
-﻿using UniRx;
+﻿using Game.View;
+using UniRx;
 using UnityEngine;
 
-namespace Hackman.Game.PlayerLife
+namespace Game.System.PlayerLife
 {
     public class PlayerLifeSystem : MonoBehaviour
     {

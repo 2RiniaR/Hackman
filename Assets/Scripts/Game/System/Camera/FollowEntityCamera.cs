@@ -1,7 +1,7 @@
-﻿using Hackman.Game.Map;
+﻿using Game.System.Map;
 using UnityEngine;
 
-namespace Hackman.Game.Camera
+namespace Game.System.Camera
 {
     public class FollowEntityCamera : MonoBehaviour
     {
@@ -18,11 +18,12 @@ namespace Hackman.Game.Camera
         {
             var targetPosition = target.transform.position;
             var minPosition = Vector2.zero + displaySize / 2;
-            var maxPosition = new Vector2(mapSystem.Field.Width, mapSystem.Field.Height) - displaySize / 2;
+            var maxPosition = mapSystem.Field.HasValue ? new Vector2(mapSystem.Field.Value.Width, mapSystem.Field.Value.Height) - displaySize / 2 : minPosition;
             var cameraPosition = new Vector2(
                 Mathf.Clamp(targetPosition.x, minPosition.x, maxPosition.x),
                 Mathf.Clamp(targetPosition.y, minPosition.y, maxPosition.y));
-            transform.position = new Vector3(cameraPosition.x, cameraPosition.y, transform.position.z);
+            var transform1 = transform;
+            transform1.position = new Vector3(cameraPosition.x, cameraPosition.y, transform1.position.z);
         }
     }
 }

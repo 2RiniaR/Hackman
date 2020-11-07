@@ -277,6 +277,8 @@
           <e p="Game" t="Include">
             <e p="Map" t="Include">
               <e p="map_1.txt" t="Include" />
+              <e p="map_2.txt" t="Include" />
+              <e p="map_3.txt" t="Include" />
               <e p="map_raw.txt" t="Include" />
             </e>
           </e>
@@ -284,70 +286,62 @@
         <e p="Scripts" t="Include">
           <e p="Game" t="Include">
             <e p="Entity" t="Include">
-              <e p="Drived" t="Include">
-                <e p="DoorKey" t="Include">
-                  <e p="DoorKey.cs" t="Include" />
-                </e>
-                <e p="Monster" t="Include">
-                  <e p="Brain" t="Include">
-                    <e p="ControlChanceDetector.cs" t="Include" />
-                    <e p="EntityStatus.cs" t="Include" />
-                    <e p="Map" t="Include">
-                      <e p="Graph.cs" t="Include" />
-                      <e p="GraphConverter.cs" t="Include" />
-                      <e p="MapGraph.cs" t="Include" />
-                      <e p="MapGraphConverter.cs" t="Include" />
-                    </e>
-                    <e p="MonsterBrain.cs" t="Include" />
-                    <e p="Presentation" t="Include">
-                      <e p="VitalIndexViewUpdater.cs" t="Include" />
-                    </e>
-                    <e p="SurvivalIndexCalculator.cs" t="Include" />
-                  </e>
-                  <e p="Monster.cs" t="Include" />
-                </e>
-                <e p="Player" t="Include">
-                  <e p="Input" t="Include">
-                    <e p="ButtonInputControl.cs" t="Include" />
-                    <e p="IInputControl.cs" t="Include" />
-                  </e>
-                  <e p="Logic" t="Include">
-                    <e p="CollisionDetector.cs" t="Include" />
-                  </e>
-                  <e p="Player.cs" t="Include" />
-                </e>
+              <e p="Action.cs" t="Include" />
+              <e p="AnimationUpdater.cs" t="Include" />
+              <e p="AnimatorParameter.cs" t="Include" />
+              <e p="Axis.cs" t="Include" />
+              <e p="ControlChecker.cs" t="Include" />
+              <e p="DoorKey" t="Include">
+                <e p="DoorKey.cs" t="Include" />
               </e>
               <e p="Entity.cs" t="Include" />
-              <e p="Functions" t="Include">
-                <e p="Logic" t="Include">
-                  <e p="ControlChecker.cs" t="Include" />
-                  <e p="MoveChecker.cs" t="Include" />
-                  <e p="MoveUpdater.cs" t="Include" />
-                  <e p="MoveUpdateResult.cs" t="Include" />
+              <e p="EntityControl.cs" t="Include" />
+              <e p="EntityMove.cs" t="Include" />
+              <e p="EntityPosition.cs" t="Include" />
+              <e p="Goal" t="Include">
+                <e p="Goal.cs" t="Include" />
+              </e>
+              <e p="Monster" t="Include">
+                <e p="Brain" t="Include">
+                  <e p="EntityStatus.cs" t="Include" />
+                  <e p="MapGraph" t="Include">
+                    <e p="ElementController.cs" t="Include" />
+                    <e p="Elements" t="Include">
+                      <e p="MapGraphEdge.cs" t="Include" />
+                      <e p="MapGraphNode.cs" t="Include" />
+                      <e p="MapGraphPosition.cs" t="Include" />
+                    </e>
+                    <e p="MapDiscreteGraphGenerator.cs" t="Include" />
+                    <e p="MapGraph.cs" t="Include" />
+                    <e p="MapGraphElementExtractor.cs" t="Include" />
+                  </e>
+                  <e p="MonsterBrain.cs" t="Include" />
+                  <e p="Presentation" t="Include">
+                    <e p="VitalIndexViewUpdater.cs" t="Include" />
+                  </e>
+                  <e p="SurvivalIndexCalculator.cs" t="Include" />
                 </e>
-                <e p="Presentation" t="Include">
-                  <e p="AnimationUpdater.cs" t="Include" />
-                  <e p="AnimatorParameter.cs" t="Include" />
-                </e>
-                <e p="Status" t="Include">
-                  <e p="MoveControl.cs" t="Include" />
-                  <e p="MoveControlStatus.cs" t="Include" />
-                  <e p="MoveStatus.cs" t="Include" />
-                </e>
-                <e p="Store" t="Include">
-                  <e p="MoveSpeedStore.cs" t="Include" />
-                </e>
+                <e p="Monster.cs" t="Include" />
+              </e>
+              <e p="MoveChecker.cs" t="Include" />
+              <e p="MoveUpdater.cs" t="Include" />
+              <e p="Player" t="Include">
+                <e p="ButtonInputControl.cs" t="Include" />
+                <e p="CollisionDetector.cs" t="Include" />
+                <e p="IInputControl.cs" t="Include" />
+                <e p="Player.cs" t="Include" />
               </e>
             </e>
-            <e p="GameActivator.cs" t="Include" />
             <e p="System" t="Include">
               <e p="Camera" t="Include">
-                <e p="FollowPlayerCamera.cs" t="Include" />
+                <e p="FollowEntityCamera.cs" t="Include" />
               </e>
+              <e p="Direction.cs" t="Include" />
               <e p="DoorKey" t="Include">
                 <e p="DoorKeySystem.cs" t="Include" />
               </e>
               <e p="GameSystem.cs" t="Include" />
+              <e p="GridPosition.cs" t="Include" />
               <e p="Map" t="Include">
                 <e p="GameMap.cs" t="Include" />
                 <e p="Logic" t="Include">
@@ -359,17 +353,16 @@
                 <e p="Presentation" t="Include">
                   <e p="TileDrawer.cs" t="Include" />
                 </e>
-                <e p="Store" t="Include">
-                  <e p="FieldStore.cs" t="Include" />
-                </e>
                 <e p="Tile.cs" t="Include" />
               </e>
               <e p="Phase" t="Include">
                 <e p="Elements" t="Include">
                   <e p="ActivePhase.cs" t="Include" />
+                  <e p="GameClearPhase.cs" t="Include" />
+                  <e p="GameOverPhase.cs" t="Include" />
+                  <e p="GameStartPhase.cs" t="Include" />
                   <e p="PhaseElement.cs" t="Include" />
                   <e p="PlayerDeathPhase.cs" t="Include" />
-                  <e p="StartPhase.cs" t="Include" />
                 </e>
                 <e p="Phase.cs" t="Include" />
                 <e p="PhaseSystem.cs" t="Include" />
@@ -382,6 +375,8 @@
               <e p="DifficultyView.cs" t="Include" />
               <e p="DoorKeyView.cs" t="Include" />
               <e p="DoorKeyViewItem.cs" t="Include" />
+              <e p="GameClearAnimation.cs" t="Include" />
+              <e p="GameOverAnimation.cs" t="Include" />
               <e p="GameStartAnimation.cs" t="Include" />
               <e p="PlayerLifeView.cs" t="Include" />
               <e p="PlayerLifeViewItem.cs" t="Include" />
@@ -390,8 +385,17 @@
           </e>
           <e p="Helper" t="Include">
             <e p="Dijkstra.cs" t="Include" />
-            <e p="IntegerRangeHelper.cs" t="Include" />
+            <e p="DiscreteGraph.cs" t="Include" />
             <e p="PriorityQueue.cs" t="Include" />
+            <e p="RangeHelper.cs" t="Include" />
+          </e>
+          <e p="Scenes" t="Include">
+            <e p="MainGame" t="Include">
+              <e p="GameActivator.cs" t="Include" />
+            </e>
+            <e p="Start" t="Include">
+              <e p="StartMenu.cs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="TextMesh Pro" t="Include">
